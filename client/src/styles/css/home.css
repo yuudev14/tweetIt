@@ -1,0 +1,258 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.Home header, .Home .authenticate, .Home .about1-container {
+  background-color: #1ed2f4;
+}
+.Home footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #1ed2f4;
+  min-height: 100px;
+}
+.Home header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 1500px;
+  z-index: 10;
+}
+.Home .authenticate {
+  margin-top: 50px;
+}
+.Home .nav-home {
+  margin: auto;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.Home .nav-home a {
+  text-decoration: none;
+  color: #f4f5f6;
+}
+.Home .logo {
+  display: flex;
+  align-items: flex-end;
+}
+.Home .logo i {
+  font-size: 1.5em;
+  color: #f4f5f6;
+  margin-left: 10px;
+}
+.Home .logo h1 {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #f4f5f6;
+  font-size: 2em;
+}
+.Home .nav-options {
+  position: fixed;
+  top: 60px;
+  height: 0;
+  width: 45%;
+  background-color: rgba(29, 53, 87, 0.99);
+  overflow: hidden;
+  transition: 1s;
+}
+.Home .active-nav {
+  height: 200px;
+}
+.Home .nav-options ul {
+  list-style-type: none;
+}
+.Home li {
+  margin: 50px;
+  font-size: 0.9em;
+  font-family: "Open Sans", sans-serif;
+}
+.Home .authenticate {
+  width: 100%;
+  height: 600px;
+  background-color: #1ed2f4;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.Home .authenticate .authenticate-container {
+  margin: auto;
+  width: 60%;
+  height: 80%;
+  display: flex;
+}
+.Home .authenticate .logo-icon {
+  width: 50%;
+  height: 100%;
+  display: none;
+}
+.Home .authenticate .logo-icon h1 {
+  color: #0074e1;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+.Home .authenticate .login_or_sign-up {
+  float: right;
+}
+.Home .authenticate .login_or_sign-up button {
+  background-color: rgba(30, 210, 244, 0.5);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  padding: 5px;
+  color: white;
+  width: 70px;
+  transition: 0.5s;
+}
+.Home .authenticate .login_or_sign-up .login {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.Home .authenticate .login_or_sign-up .sign-up {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.Home .authenticate .login_or_sign-up .btnActive {
+  background-color: #1ed2f4;
+}
+.Home .authenticate .login-sign-up-authenticate {
+  background-color: #f4f5f6;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+}
+.Home .authenticate .login-sign-up-authenticate h2 {
+  margin-top: 20px;
+  color: #1ed2f4;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+}
+.Home .authenticate .login-sign-up-authenticate p {
+  color: #1ed2f4;
+  font-family: "Open Sans", sans-serif;
+}
+.Home .authenticate .login-sign-up-authenticate form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.Home .authenticate .login-sign-up-authenticate form i {
+  color: #1ed2f4;
+}
+.Home .authenticate .login-sign-up-authenticate input {
+  width: 80%;
+  height: 1.4rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #1ed2f4;
+}
+.Home .authenticate .login-sign-up-authenticate input[type=submit] {
+  background-color: #f79e02;
+  color: #f4f5f6;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 1em;
+  width: 50%;
+  height: 2em;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.Home .authenticate .login-sign-up-authenticate input[type=submit]:hover {
+  transform: scale(1.2);
+}
+.Home .authenticate .login-sign-up-authenticate .input-container {
+  border: 2px solid #1ed2f4;
+  background-color: transparent;
+  width: 100%;
+  margin: 10px;
+  border-radius: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+.Home .about1-container {
+  height: -webkit-max-content;
+  height: max-content;
+  min-height: 300px;
+  width: 100%;
+  background-color: #1ed2f4;
+  display: flex;
+}
+.Home .about1-container div {
+  width: 60%;
+  margin: 0 auto;
+  min-width: 230px;
+}
+.Home .about1-container h1 {
+  text-align: center;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #f4f5f6;
+  font-size: 3em;
+  display: inline;
+}
+.Home .about1-container h3 {
+  font-family: "Open Sans", sans-serif;
+  color: #f4f5f6;
+  font-size: 1em;
+}
+.Home .about1-container .type-cursor {
+  border-right: 5px solid #f4f5f6;
+  font-size: 3em;
+  margin-left: 10px;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .nav-home .logo i {
+    display: none;
+  }
+  .nav-home .nav-options {
+    position: static;
+    height: -webkit-max-content;
+    height: max-content;
+    background-color: transparent;
+    width: -webkit-max-content;
+    width: max-content;
+  }
+  .nav-home .nav-options ul {
+    display: flex;
+  }
+  .nav-home li {
+    margin: 0 20px;
+  }
+
+  .authenticate {
+    justify-content: space-between !important;
+  }
+  .authenticate .logo-icon {
+    color: #f4f5f6;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .authenticate .logo-icon img {
+    width: 100%;
+    max-width: 400px;
+  }
+  .authenticate .login-sign-up-authenticate {
+    width: 50% !important;
+    max-width: 310px;
+  }
+}

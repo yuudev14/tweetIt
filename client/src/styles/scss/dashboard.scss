@@ -1,0 +1,39 @@
+@import 'variables';
+@import 'dashboard-mixin';
+
+.dashboard{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    
+    @include header;
+    @include main;
+    @include footer;
+    .newTweetIcon{
+        position: fixed;
+        background-color: $primary;
+        z-index: 11;
+        color: white;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        box-shadow: 2px 3px 9px $secondary;
+        bottom: 70px;
+        right: 30px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width : 1000px){
+    .dashboard{
+        @include mainPC;
+        footer{
+            display: none;
+        }
+    }
+}

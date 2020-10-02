@@ -1,0 +1,109 @@
+@mixin news-feed {
+    .active-new-tweet{
+        top : 50% !important;
+    }
+    .new-Tweet{
+        display: flex;
+        width: 90%;
+        position: fixed;
+        top: 1000%;
+        left: 50%;
+        height: 80vh;
+        transition: .5s;
+        transform: translate(-50%, -50%);
+        z-index: 11;
+        padding: 10px 15px;
+        padding-top: 20px;
+        background-color: white;
+        border-radius: 13px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+        border: 1px solid rgb(209, 209, 209);
+        .user_pic{
+            width : 10%;
+            img{
+                width : 70%
+
+            }
+        }
+        .newTweetForm{
+            width: 90%;
+            form{
+                border-bottom: 1px solid rgb(209, 209, 209);
+                margin-bottom: 10px;
+
+            }
+            textarea{
+                width: 100%;
+                resize: none;
+                padding: 5px;
+                font-family: $secondaryFont, sans-serif;
+                outline: 0;
+                border: none;
+                
+            }
+            
+            .formIconsContainer{
+                display: flex;
+                input[type=submit]{
+                    padding:  10px;
+                    background-color: $primary;
+                    color : white;
+                    font-family: $secondaryFont, sans-serif;
+                    border: none;
+                    border-radius: 20px;
+                    margin-left: auto;
+                }
+
+            }
+        }
+    }
+    .news-feed-container{ 
+        
+        .news-feed{
+            
+            display: flex;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgb(209, 209, 209);
+            border-radius: 13px;
+            font-family: $secondaryFont, sans-serif;
+            background-color: white;
+        
+        }
+        .profile_logo{
+            width: 10%;
+            img{
+                width: 70%;
+            }
+        }
+        .feed-content{
+            width: 90%;
+        }
+        .feed-user-info{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            .feed-username{
+                font-weight: bolder;
+                color: $secondary;
+            }
+        }
+        .icons ul{
+            display: flex;
+            list-style-type: none;
+        }
+        li{
+            display: flex;
+            margin-top: 10px;
+        }
+        i{
+            color: $primary;
+            margin: 0 10px;
+            &:hover{
+                color: $secondary;
+                cursor: pointer;
+            }
+        }
+    }
+}

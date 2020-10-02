@@ -1,0 +1,81 @@
+@mixin profile {
+    .profile_suggestion-section{
+        background-color: white;
+        padding: 10px;
+        border-radius: 13px;
+        .profile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            img{
+                width : 100px;
+                // margin: 20px;
+            }
+            p{
+                text-align: center;
+            }
+            button{
+                width: 120px;
+                height: 30px;
+                margin: 20px;
+                outline: 0;
+                border: 0;
+                background-color: $tertiary;
+                box-shadow: 1px 1px 3px $tertiary;
+                color: $quarternary;
+                cursor: pointer;
+                border-radius: 13px;
+                &:hover{
+                    box-shadow: 1px 1px 7px $tertiary;
+                }
+                
+            }
+        }
+        h1{
+            font-family: $secondaryFont, sans-serif;
+            color: $secondary;
+            text-align: center;
+        }
+        .friend_suggestion_container{
+            
+            margin: auto;
+            width: 90%;
+            height: 50vh;
+            overflow-y: auto;
+            
+
+            .suggestion{
+                display: flex;
+                width: 90%;
+                margin: 20px 0;
+                .suggestion_user_profile{
+                    display: flex;
+                    width: 100%;
+                    img{
+                        width: 30%;
+                    }
+                    
+                }
+                button{
+
+                    outline: 0;
+                    background-color: $secondary;
+                    box-shadow: 1px 1px 3px $secondary;
+                    color: $quarternary;
+                    cursor: pointer;
+                    border-radius: 13px;
+                    &:hover{
+                        box-shadow: 1px 1px 7px $secondary;
+                        background-color: $primary;
+                    }
+                    border: none;
+                    width: 200px;
+                }
+            }
+        }
+        
+        
+    }
+
+}

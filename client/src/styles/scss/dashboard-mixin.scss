@@ -1,0 +1,157 @@
+@import 'notification-mixin';
+@import 'news-feed-mixin';
+@import 'profile-mixin';
+
+@mixin header {
+    header{
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        max-width: 1550px;
+        padding: 10px;
+        border-bottom : 1px solid rgb(209, 209, 209);;
+        font-family: $primaryFont, sans-serif;
+        color: $secondary;
+        z-index: 10;
+
+        nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        .logo h1{
+            cursor: pointer;
+        }
+        .search{
+            height: 30px;
+            border-radius: 13px;
+            border: 1px solid rgb(209, 209, 209);;
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        input{
+            outline: none;
+            border: none;
+            width: 80%;
+            height: 70%;
+            background-color: transparent;
+        }
+        .dashboard-options{
+            display: none;
+        }
+    }
+    
+}
+@mixin main {
+    main{
+        min-height: 100%;
+        height: 100vh;
+        padding: 10px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        
+        
+        // overflow: hidden;
+        section{
+            display: none;
+            max-width: 400px;
+            margin: auto;
+            
+        }
+        .main-active{
+            display: block !important;
+        }
+        .new-Tweet{
+            display: none;
+        }
+        @include profile;
+        
+        @include notification;
+        @include news-feed;
+    }
+}
+@mixin footer {
+    footer{
+        background-color: white;
+        border-top : 1px solid rgb(209, 209, 209);;
+        position: fixed;
+        display: block;
+
+        bottom: 0;
+        width: 100%;
+        
+        ul{
+            margin: 0;
+            display: flex;
+            list-style-type: none;
+            justify-content: space-between;
+        }
+        li{
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            height: 100%;
+            font-size: 1.5em;
+            color: $primary;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .footer-active{
+            border-top: 2px solid $secondary;
+            color : $secondary !important;
+        }
+    }
+    
+}
+
+@mixin mainPC {
+    main{
+        display: flex;
+        height: 100vh;
+        position: relative;
+        padding-bottom: 0;
+        
+
+        section{
+            display: block;
+        }
+        .notification-section{
+            width: 25%;
+            height: 500px;
+            margin-top: 0;
+            position: fixed;
+            left: 0;
+        }
+        .newsFeed-section{
+            width: 40%;
+            max-width: 60%;
+            height: 100vh;
+            margin-top: 0;
+            .new-Tweet{
+                display: flex;
+                position: static;
+                top: 0;
+                left: 0;
+                transform: translate(0,0);
+                width: 100%;
+                height: max-content;
+            }
+        }
+        .profile_suggestion-section{
+            margin-top: 0;
+            width: 25%;
+            height: 500px;
+            position: fixed;
+            right: 0;
+            .friend_suggestion_container{
+                height: 250px !important;
+                overflow-y: auto;
+            }
+        }
+        
+
+    }
+    
+}

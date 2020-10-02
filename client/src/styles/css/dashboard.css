@@ -1,0 +1,428 @@
+.dashboard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard header {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  max-width: 1550px;
+  padding: 10px;
+  border-bottom: 1px solid #d1d1d1;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #0074e1;
+  z-index: 10;
+}
+.dashboard header nav {
+  display: flex;
+  justify-content: space-around;
+}
+.dashboard header .logo h1 {
+  cursor: pointer;
+}
+.dashboard header .search {
+  height: 30px;
+  border-radius: 13px;
+  border: 1px solid #d1d1d1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard header input {
+  outline: none;
+  border: none;
+  width: 80%;
+  height: 70%;
+  background-color: transparent;
+}
+.dashboard header .dashboard-options {
+  display: none;
+}
+.dashboard main {
+  min-height: 100%;
+  height: 100vh;
+  padding: 10px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.dashboard main section {
+  display: none;
+  max-width: 400px;
+  margin: auto;
+}
+.dashboard main .main-active {
+  display: block !important;
+}
+.dashboard main .new-Tweet {
+  display: none;
+}
+.dashboard main .profile_suggestion-section {
+  background-color: white;
+  padding: 10px;
+  border-radius: 13px;
+}
+.dashboard main .profile_suggestion-section .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.dashboard main .profile_suggestion-section .profile img {
+  width: 100px;
+}
+.dashboard main .profile_suggestion-section .profile p {
+  text-align: center;
+}
+.dashboard main .profile_suggestion-section .profile button {
+  width: 120px;
+  height: 30px;
+  margin: 20px;
+  outline: 0;
+  border: 0;
+  background-color: #f79e02;
+  box-shadow: 1px 1px 3px #f79e02;
+  color: #f4f5f6;
+  cursor: pointer;
+  border-radius: 13px;
+}
+.dashboard main .profile_suggestion-section .profile button:hover {
+  box-shadow: 1px 1px 7px #f79e02;
+}
+.dashboard main .profile_suggestion-section h1 {
+  font-family: "Open Sans", sans-serif;
+  color: #0074e1;
+  text-align: center;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container {
+  margin: auto;
+  width: 90%;
+  height: 50vh;
+  overflow-y: auto;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container .suggestion {
+  display: flex;
+  width: 90%;
+  margin: 20px 0;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container .suggestion .suggestion_user_profile {
+  display: flex;
+  width: 100%;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container .suggestion .suggestion_user_profile img {
+  width: 30%;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container .suggestion button {
+  outline: 0;
+  background-color: #0074e1;
+  box-shadow: 1px 1px 3px #0074e1;
+  color: #f4f5f6;
+  cursor: pointer;
+  border-radius: 13px;
+  border: none;
+  width: 200px;
+}
+.dashboard main .profile_suggestion-section .friend_suggestion_container .suggestion button:hover {
+  box-shadow: 1px 1px 7px #0074e1;
+  background-color: #1ed2f4;
+}
+.dashboard main .notification-section {
+  height: 100%;
+  width: 90%;
+  overflow: hidden;
+  background-color: white;
+  padding: 10px;
+  border-radius: 13px;
+}
+.dashboard main .notification-section .choose-notification button {
+  width: 50%;
+  font-size: 1em;
+  padding: 5px;
+  font-family: "Open Sans", sans-serif;
+  outline: none;
+  font-weight: bold;
+  border: none;
+  color: #838383;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.dashboard main .notification-section .choose-notification button:hover {
+  color: #0074e1;
+}
+.dashboard main .notification-section .choose-notification .notif-active {
+  border-bottom: 1px solid #0074e1;
+  color: #0074e1;
+}
+.dashboard main .notification-section .notification-container {
+  padding-bottom: 70px;
+}
+.dashboard main .notification-section .notification-container .notification {
+  display: flex;
+  overflow-y: auto;
+}
+.dashboard main .notification-section .notification-container .notification-type {
+  width: 20%;
+}
+.dashboard main .notification-section .notification-container .notification-type img {
+  width: 40%;
+  float: right;
+  margin-right: 10px;
+}
+.dashboard main .notification-section .notification-container .notification-content {
+  width: 80%;
+}
+.dashboard main .notification-section .notification-container .notification-content img {
+  width: 15%;
+}
+.dashboard main .notification-section .notification-container .notification-content p {
+  font-family: "Open Sans", sans-serif;
+}
+.dashboard main .notification-section .notification-container .notification-content .notif-info {
+  color: #838383;
+}
+.dashboard main .notification-section section {
+  overflow-y: auto;
+  margin-top: 10px;
+  height: 100%;
+  display: none;
+}
+.dashboard main .notification-section .notif-container-active {
+  display: block;
+}
+.dashboard main .notification-section .friend_request {
+  padding-bottom: 70px;
+}
+.dashboard main .notification-section .friend_request .friend_request_content {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 40px auto;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .user_profile {
+  display: flex;
+  width: 40%;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .user_profile img {
+  width: 40%;
+  margin-right: 10px;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete {
+  width: 45%;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete button {
+  height: 80%;
+  width: 40%;
+  margin: 0 2px;
+  border: none;
+  outline: none;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 13px;
+  cursor: pointer;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete .accept {
+  background-color: #1ed2f4;
+  color: white;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete .accept:hover {
+  background-color: #0074e1;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete .delete {
+  background-color: #f79e02;
+  color: white;
+}
+.dashboard main .notification-section .friend_request .friend_request_content .accept_delete .delete:hover {
+  background-color: red;
+}
+.dashboard main .active-new-tweet {
+  top: 50% !important;
+}
+.dashboard main .new-Tweet {
+  display: flex;
+  width: 90%;
+  position: fixed;
+  top: 1000%;
+  left: 50%;
+  height: 80vh;
+  transition: 0.5s;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  padding: 10px 15px;
+  padding-top: 20px;
+  background-color: white;
+  border-radius: 13px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  border: 1px solid #d1d1d1;
+}
+.dashboard main .new-Tweet .user_pic {
+  width: 10%;
+}
+.dashboard main .new-Tweet .user_pic img {
+  width: 70%;
+}
+.dashboard main .new-Tweet .newTweetForm {
+  width: 90%;
+}
+.dashboard main .new-Tweet .newTweetForm form {
+  border-bottom: 1px solid #d1d1d1;
+  margin-bottom: 10px;
+}
+.dashboard main .new-Tweet .newTweetForm textarea {
+  width: 100%;
+  resize: none;
+  padding: 5px;
+  font-family: "Open Sans", sans-serif;
+  outline: 0;
+  border: none;
+}
+.dashboard main .new-Tweet .newTweetForm .formIconsContainer {
+  display: flex;
+}
+.dashboard main .new-Tweet .newTweetForm .formIconsContainer input[type=submit] {
+  padding: 10px;
+  background-color: #1ed2f4;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  border-radius: 20px;
+  margin-left: auto;
+}
+.dashboard main .news-feed-container .news-feed {
+  display: flex;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 13px;
+  font-family: "Open Sans", sans-serif;
+  background-color: white;
+}
+.dashboard main .news-feed-container .profile_logo {
+  width: 10%;
+}
+.dashboard main .news-feed-container .profile_logo img {
+  width: 70%;
+}
+.dashboard main .news-feed-container .feed-content {
+  width: 90%;
+}
+.dashboard main .news-feed-container .feed-user-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.dashboard main .news-feed-container .feed-user-info .feed-username {
+  font-weight: bolder;
+  color: #0074e1;
+}
+.dashboard main .news-feed-container .icons ul {
+  display: flex;
+  list-style-type: none;
+}
+.dashboard main .news-feed-container li {
+  display: flex;
+  margin-top: 10px;
+}
+.dashboard main .news-feed-container i {
+  color: #1ed2f4;
+  margin: 0 10px;
+}
+.dashboard main .news-feed-container i:hover {
+  color: #0074e1;
+  cursor: pointer;
+}
+.dashboard footer {
+  background-color: white;
+  border-top: 1px solid #d1d1d1;
+  position: fixed;
+  display: block;
+  bottom: 0;
+  width: 100%;
+}
+.dashboard footer ul {
+  margin: 0;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+.dashboard footer li {
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  font-size: 1.5em;
+  color: #1ed2f4;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.dashboard footer .footer-active {
+  border-top: 2px solid #0074e1;
+  color: #0074e1 !important;
+}
+.dashboard .newTweetIcon {
+  position: fixed;
+  background-color: #1ed2f4;
+  z-index: 11;
+  color: white;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  box-shadow: 2px 3px 9px #0074e1;
+  bottom: 70px;
+  right: 30px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1000px) {
+  .dashboard main {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    padding-bottom: 0;
+  }
+  .dashboard main section {
+    display: block;
+  }
+  .dashboard main .notification-section {
+    width: 25%;
+    height: 500px;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+  }
+  .dashboard main .newsFeed-section {
+    width: 40%;
+    max-width: 60%;
+    height: 100vh;
+    margin-top: 0;
+  }
+  .dashboard main .newsFeed-section .new-Tweet {
+    display: flex;
+    position: static;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    width: 100%;
+    height: -webkit-max-content;
+    height: max-content;
+  }
+  .dashboard main .profile_suggestion-section {
+    margin-top: 0;
+    width: 25%;
+    height: 500px;
+    position: fixed;
+    right: 0;
+  }
+  .dashboard main .profile_suggestion-section .friend_suggestion_container {
+    height: 250px !important;
+    overflow-y: auto;
+  }
+  .dashboard footer {
+    display: none;
+  }
+}

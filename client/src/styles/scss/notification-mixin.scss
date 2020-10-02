@@ -1,0 +1,125 @@
+@mixin notification {
+    .notification-section{
+        height: 100%;
+        width: 90%;
+        overflow: hidden;
+        background-color: white;
+        padding: 10px;
+        border-radius: 13px;
+        
+        .choose-notification{
+            button{
+                width: 50%;
+                font-size: 1em;
+                padding: 5px;
+                font-family: $secondaryFont, sans-serif;
+                outline: none;
+                font-weight: bold;
+                border : none;
+                color: rgb(131, 131, 131);
+                background-color: transparent;
+                cursor: pointer;
+                transition: .5s;
+                &:hover{
+                    color: $secondary;
+                }
+            }
+            .notif-active{
+                border-bottom: 1px solid $secondary;
+                color: $secondary;
+            }
+        }
+        .notification-container{
+            padding-bottom: 70px;
+            .notification{
+                display: flex;
+                overflow-y: auto;
+                
+            }
+            .notification-type{
+                width : 20%;
+                img{
+                    width: 40%;
+                    float: right;
+                    margin-right: 10px;
+                }
+            }
+            
+            .notification-content{
+                width: 80%;
+                img{
+                    width: 15%;
+                }
+                p{
+                    font-family: $secondaryFont, sans-serif;
+                }
+                .notif-info{
+                    color : rgb(131, 131, 131);
+                }
+            }
+        }
+        
+        section{
+            overflow-y: auto;
+            margin-top: 10px;
+            height: 100%;
+            display: none;
+            // display: block;
+        }
+        .notif-container-active{
+            display: block;
+        }
+        
+        .friend_request{
+            padding-bottom: 70px;
+            .friend_request_content{
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+                margin: 40px auto;
+                .user_profile{
+                    display: flex;
+                    width: 40%;
+                    img{
+                        width: 40%;
+                        margin-right: 10px;
+                    }
+                    
+
+                }
+                .accept_delete{
+                    width: 45%;
+
+                    button{
+                        height: 80%;
+                        width: 40%;
+                        margin: 0 2px;
+                        border: none;
+                        outline: none;
+                        font-family: $secondaryFont, sans-serif;
+                        border-radius: 13px;
+                        cursor: pointer;
+
+                    }
+                    .accept{
+                        background-color: $primary;
+                        color: white;
+                        &:hover{
+                            background-color: $secondary;
+                        }
+                    }
+                    .delete{
+                        background-color: $tertiary;
+                        color: white;
+                        &:hover{
+                            background-color: red;
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+    }
+}

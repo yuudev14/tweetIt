@@ -1,0 +1,260 @@
+@import 'variables';
+
+@mixin Nav{
+    .nav-home{
+        margin: auto;
+        width: 80%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            text-decoration: none;
+            color: $quarternary;
+        }
+        padding: 10px;
+    }
+    .logo{
+        display : flex;
+        align-items: flex-end;
+        i{
+            font-size: 1.5em;
+            color: $quarternary;
+            margin-left: 10px;
+        }
+    }
+    .logo h1{
+        font-family: $primaryFont, sans-serif;
+        color: $quarternary;
+        font-size: 2em;
+    }
+    .nav-options{
+        position: fixed;
+        top : 60px;
+        height: 0;
+        width: 45%;
+        // left : 0;
+        background-color: rgba(29,53,87, 0.99);
+        overflow: hidden;
+        transition: 1s;
+    }
+    .active-nav{
+        height: 200px;
+    }
+    .nav-options ul{
+        list-style-type: none;
+    }
+    li{
+        margin: 50px;
+        font-size: .9em;
+        font-family: $secondaryFont, sans-serif;
+    }
+    
+}
+@mixin Authenticate {
+    .authenticate{
+        width: 100%;
+        height: 600px;
+        background-color: $primary;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .authenticate-container{
+            margin: auto;
+            width: 60%;
+            height: 80%;
+            display: flex;
+        }
+        .logo-icon{
+            width: 50%;
+            height: 100%;
+            display: none;
+            h1{
+                color: $secondary;
+                font-family: $primaryFont, sans-serif;
+            }
+        }
+        .login_or_sign-up{
+            float: right;
+            
+            button{
+                background-color: rgba(30,210,244, 0.5);
+
+                border:none;
+                outline: none;
+                cursor: pointer;
+                font-family: $secondaryFont, sans-serif;
+                padding: 5px;
+                color: white;
+                width: 70px;
+                transition: .5s;
+            }
+            .login{
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+            }
+            .sign-up{
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
+            .btnActive{
+                background-color: $primary;
+            }
+        }
+        .login-sign-up-authenticate{
+            background-color: $quarternary;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            h2{
+                margin-top: 20px;
+                color: $primary;
+                font-size: 1.5rem;
+                font-family: $secondaryFont, sans-serif;
+            }
+            p{
+                color: $primary;
+                font-family: $secondaryFont, sans-serif;
+            }
+            form{
+                margin-top: 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                i{
+                    color: $primary;
+                }
+            }
+            input{
+                width: 80%;
+                height: 1.4rem;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: $primary;
+            }
+            input[type=submit]{
+                background-color: $tertiary;
+                color: $quarternary;
+                font-family: $secondaryFont, sans-serif;
+                border-radius: 1em;
+                width: 50%;
+                height: 2em;
+                margin: 10px;
+                cursor: pointer;
+                transition: .5s;
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+            .input-container{
+                border: 2px solid $primary;
+                background-color: transparent;
+                width: 100%;
+                margin: 10px;
+                border-radius: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                padding: 5px;
+            }
+        }
+    }
+    
+
+    
+}
+
+@mixin About1 {
+    .about1-container{
+        height: max-content;
+        min-height: 300px;
+        
+        width: 100%;
+        background-color: $primary;
+        display: flex;
+        div{
+            width: 60%;
+            margin:0 auto;
+            min-width: 230px;
+            // height: 300px;
+            // max-height: 500px;
+        }
+        h1{
+            text-align: center;
+            font-family: $primaryFont, sans-serif;
+            color: $quarternary;
+            font-size: 3em;
+            display: inline;
+        }
+        h3{
+            font-family: $secondaryFont, sans-serif;
+            color: $quarternary;
+            font-size: 1em;
+        }
+        .type-cursor{
+            border-right: 5px solid $quarternary;
+            font-size: 3em;
+            margin-left: 10px;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            opacity: 0;
+        }
+        @keyframes blink {
+            
+            to{
+                opacity: 1;
+            }
+            
+        }
+    }
+}
+
+@mixin Tablet{
+    .nav-home{
+        .logo{
+            i{
+                display: none;
+            }
+        }
+        .nav-options{
+            position: static;
+            height: max-content;
+            background-color: transparent;
+            width: max-content;
+        }
+        .nav-options ul{
+            display: flex;
+            
+        }
+        li{
+            margin: 0 20px;
+        }
+    }
+    .authenticate{
+        justify-content: space-between !important;
+        .logo-icon{
+            color: $quarternary;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            img{
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            
+        }
+        .login-sign-up-authenticate{
+            width: 50% !important;
+            max-width: 310px;
+            
+        }
+    }
+
+}
