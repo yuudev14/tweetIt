@@ -1,21 +1,23 @@
-import { json } from 'express';
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useReducer, useEffect} from 'react';
 import {isLoginReducer} from './reducers/isLoginReducer';
 
-export const ISLOGIN = createContext();
-const IsLogin = (props) => {
+export const IsLogin = createContext();
+const IsLoginProvider = (props) => {
     const [auth, dispatch] = useReducer(isLoginReducer, {}, () => {
-        const localStorage = localStorage.getItem('auth');
-        return localStorage ? json.parse(localStorage) : {
+        const authLocalStorage = localStorage.getItem('auth');
+        return authLocalStorage ? JSON.parse(authLocalStorage) : {
             isAuth : false,
             code : ''
         }
     });
+    useEffect(()=> {
+        localStorage.setItem('auth', JSON.stringify(auth));
+    }, [auth]);
     return ( 
-        <ISLOGIN.Provider value = {{auth, dispatch}}>
+        <IsLogin.Provider value = {{auth, dispatch}}>
             {props.children}
-        </ISLOGIN.Provider>
+        </IsLogin.Provider>
      );
 }
  
-export default IsLogin;
+export default IsLoginProvider;

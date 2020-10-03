@@ -18,8 +18,9 @@
             display: flex;
             justify-content: space-around;
         }
-        .logo h1{
-            cursor: pointer;
+        .logo a{
+            
+            color : $secondary;
         }
         .search{
             height: 30px;
@@ -58,6 +59,9 @@
             max-width: 400px;
             margin: auto;
             
+        }
+        .main-null{
+            display : none
         }
         .main-active{
             display: block !important;
@@ -122,7 +126,7 @@
             height: 500px;
             margin-top: 0;
             position: fixed;
-            left: 0;
+            left: 10px;
         }
         .newsFeed-section{
             width: 40%;
@@ -144,7 +148,7 @@
             width: 25%;
             height: 500px;
             position: fixed;
-            right: 0;
+            right: 10px;
             .friend_suggestion_container{
                 height: 250px !important;
                 overflow-y: auto;

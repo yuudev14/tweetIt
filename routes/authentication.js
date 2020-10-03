@@ -81,5 +81,10 @@ route.post('/log-in', (req, res, next)=>{
         });
     })(req, res, next)
 
+});
+
+route.get('/log-out', (req, res) => {
+    req.logout();
+    res.send('logout');
 })
 module.exports = route

@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'dashboard-mixin';
+@import 'news-feed-mixin';
 
 .dashboard{
     height: 100%;
@@ -27,6 +28,80 @@
         right: 30px;
         cursor: pointer;
     }
+    .userHomeProfile-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .Userpicture{
+            width: 100%;
+        }
+        .coverPhoto{
+            margin: auto;
+            height: 250px;
+            width: 95%;
+            background-color: $primary;
+            border-radius: 13px;
+        }
+        .profilePicAndBtn{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            button{
+                height: 30px;
+                width: 100px;
+                margin-top: 10px;
+                margin: 20px;
+                outline: 0;
+                border: 0;
+                border-radius: 13px;
+                background-color: $secondary;
+                color: $quarternary;
+                font-family: $secondaryFont, sans-serif;
+                cursor: pointer;
+
+            }
+        }
+        .prof-pic{
+            margin-top: -50px;
+            margin-left: 20px;
+            img{
+                width: 100px;
+            }
+            p{
+                text-align: center;
+                color: $secondary;
+                font-family: $secondaryFont, sans-serif;
+            }
+            
+        }
+        .friend-total-container{
+            display: flex;
+            padding: 10px;
+            background-color: white;
+            width: 80%;
+            margin: 10px;
+            border-radius: 13px;
+            justify-content: space-between;
+            h3{
+                font-family: $secondaryFont, sans-serif;
+                color: $primary;
+            }
+            button{
+                outline: 0;
+                border: none;
+                border-bottom: 1px solid $secondary;
+                color: $secondary;
+                background-color: transparent;
+                font-family: $secondaryFont, sans-serif;
+                cursor: pointer;
+
+            }
+
+        }
+        
+        @include news-feed;
+
+    }
 }
 
 @media only screen and (min-width : 1000px){
@@ -34,6 +109,21 @@
         @include mainPC;
         footer{
             display: none;
+        }
+        .newTweetIcon{
+            display: none;
+        }
+        .userHomeProfile-section{
+            width: 100%;
+            max-width: 50%;
+            .user-posts{
+                width: 80%;
+                .newsFeed-section{
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+            }
+            width: 100%;
         }
     }
 }

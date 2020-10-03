@@ -6,10 +6,10 @@ import logo from '../../assets/tweetIt.png';
 import axios from 'axios';
 import SignUp from './login_signup/sign-up';
 import Login from './login_signup/login';
-import { ISLOGIN } from '../../contexts/isLogin';
+import { IsLogin } from '../../contexts/isLogin';
 
 const Home = (props) => {
-    const {dispatch} = useContext(ISLOGIN);
+    const {dispatch} = useContext(IsLogin);
     const [form, setForm] = useState('log-in');
     const [registerInfo, setRegisterInfo] = useState({
         username : '',
@@ -53,7 +53,6 @@ const Home = (props) => {
                     isTyping=true;
                     setTimeout(()=>{
                         const interval = setInterval(() => {
-                        
                             original += copy[i];
                             i++
                             document.querySelector('.slogan').textContent = original
@@ -62,7 +61,6 @@ const Home = (props) => {
                             }
                             speed = 100
                         }, speed);
-
                     }, 500)   
             }
         }

@@ -24,3 +24,6 @@ code {
   position: relative;
   margin: auto;
 }
+a{
+  text-decoration: none;
+}

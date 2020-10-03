@@ -1,22 +1,25 @@
 import React from 'react';
-import axios from 'axios';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/home/home';
 import Dashboard from './components/dashboard/dashboard';
-import IsLogin from './contexts/isLogin';
+import IsLoginProvider from './contexts/isLogin';
 
 
 function App() {
   return (
     <Router>
+    <IsLoginProvider>
       <div className="App">
         <Switch>
-          <IsLogin>
+          
             <Route path='/home' component={Home} />
             <Route exact path='/' component={Dashboard} />
-          </IsLogin>
+            <Route exact path='/user' component={Dashboard} />
+          
+            
         </Switch>  
       </div>
+      </IsLoginProvider>
     </Router>
     
   );

@@ -7,7 +7,6 @@ const NewsFeeds = () => {
             <div className='profile_logo'>
                 <div className='logo'>
                     <img src={user} />
-
                 </div>
             </div>
             <div className='feed-content'>
