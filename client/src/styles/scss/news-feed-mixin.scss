@@ -28,7 +28,7 @@
         }
         .newTweetForm{
             width: 90%;
-            form{
+            .form{
                 border-bottom: 1px solid rgb(209, 209, 209);
                 margin-bottom: 10px;
 
@@ -53,6 +53,12 @@
                     border: none;
                     border-radius: 20px;
                     margin-left: auto;
+                    cursor: pointer;
+                    transition: .5s;
+                    outline: 0;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
                 }
 
             }

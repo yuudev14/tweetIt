@@ -1,7 +1,7 @@
 import React from 'react';
 import user from '../../../assets/user.png';
 
-const NewsFeeds = () => {
+const NewsFeeds = ({post, username}) => {
     return (
         <div className='news-feed'>
             <div className='profile_logo'>
@@ -11,11 +11,11 @@ const NewsFeeds = () => {
             </div>
             <div className='feed-content'>
                 <div className='feed-user-info'>
-                    <p className='feed-username'>YuTakaki</p>
+                    <p className='feed-username'>{username}</p>
                     <p className='date'>10/06/20</p>
                 </div>
                 <div className='tweet-content'>
-                    <p>Seriously, we legit sunk in our chairs and questioned the very existence of reality. What was your reaction?Weary cat face</p>
+                    <p>{post.tweet}</p>
                 </div>
                 <div className='icons'>
                     <ul>

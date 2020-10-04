@@ -12,6 +12,12 @@
     @include header;
     @include main;
     @include footer;
+    .footer-nav-show{
+        display: block;
+    }
+    .footer-nav-none{
+        display: none;
+    }
     .newTweetIcon{
         position: fixed;
         background-color: $primary;
@@ -100,13 +106,18 @@
         }
         
         @include news-feed;
+        
 
     }
+    
 }
 
 @media only screen and (min-width : 1000px){
     .dashboard{
         @include mainPC;
+        .footer-nav-show{
+            display: none;
+        }
         footer{
             display: none;
         }
