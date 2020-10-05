@@ -114,7 +114,7 @@
 @mixin mainPC {
     main{
         display: flex;
-        height: 100vh;
+        // height: 100vh;
         position: relative;
         
 
@@ -131,7 +131,7 @@
         .newsFeed-section{
             width: 40%;
             max-width: 60%;
-            height: 100vh;
+            // height: 100vh;
             margin-top: 0;
             .new-Tweet{
                 display: flex;

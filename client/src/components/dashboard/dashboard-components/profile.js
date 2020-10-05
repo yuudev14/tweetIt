@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import user from '../../../assets/user.png';
 import FriendSuggestion from './friend_suggestion';
 import axios from 'axios';
@@ -6,7 +6,14 @@ import { IsLogin } from '../../../contexts/isLogin';
 import {withRouter, Link} from 'react-router-dom';
 
 const Profile = (props) => {
-    const {dispatch} = useContext(IsLogin);
+    const {auth, dispatch} = useContext(IsLogin);
+    const [friendSuggestions, setFriendSuggestion] = useState([{username : '', _id : ''}]);
+    useEffect(() => {
+        axios.get(`/dashboard/friends-suggestion/${auth.code}`)
+            .then(res =>{
+                setFriendSuggestion(res.data);
+            });
+    },[]);
     const logout = () => {
         axios.get('/authentication/log-out')
             .then(res => {
@@ -27,15 +34,10 @@ const Profile = (props) => {
             </div>
             <h1>Friend Suggestions</h1>
             <div className='friend_suggestion_container'>
-                
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
-                <FriendSuggestion />
+                {friendSuggestions.map(friend => (
+                    <FriendSuggestion friend={friend} setFriendSuggestion = {setFriendSuggestion}/>
+
+                ))}
                 
             </div>
         </>

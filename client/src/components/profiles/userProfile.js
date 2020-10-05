@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import HomeNewsFeed from '../dashboard/dashboard-components/homeNewsFeed';
+import HomeNewsFeed from '../dashboard/dashboard-components/NewsFeedandNewTweet';
 import user from '../../assets/user.png';
 
 const UserProfile = ({navView}) => {
@@ -45,7 +45,7 @@ const UserProfile = ({navView}) => {
                 <button>See All</button>
             </div>
             <div className='user-posts'>
-                <HomeNewsFeed />
+                <HomeNewsFeed category='user' />
             </div>
 
         </section>

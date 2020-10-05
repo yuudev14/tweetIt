@@ -1,10 +1,10 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import { HashRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom';
 import { IsLogin } from '../../contexts/isLogin';
 import '../../styles/css/dashboard.css';
 import UserProfile from '../profiles/userProfile';
 import FriendRequest from './dashboard-components/friend_request';
-import HomeNewsFeed from './dashboard-components/homeNewsFeed';
+import HomeNewsFeed from './dashboard-components/NewsFeedandNewTweet';
 import Notification from './dashboard-components/notification'
 import Profile from './dashboard-components/profile';
 import axios from 'axios';
@@ -12,13 +12,13 @@ import { USERDATA } from '../../contexts/userData';
 
 const Dashboard = (props) => {
     const {auth} = useContext(IsLogin);
-    const {dispatch} = useContext(USERDATA);
+    const {userData, dispatch} = useContext(USERDATA);
     useEffect(()=>{
         axios.get(`/dashboard/user/${auth.code}`)
             .then(res => {
                 dispatch({type : 'USERDATA', data : res.data});
-            })
-
+            });
+        
     },[])
     const navView = (className, liClass, sectionClass, liActive, sectionctive) => {
         const li = document.querySelectorAll(liClass);
@@ -75,28 +75,15 @@ const Dashboard = (props) => {
                                 <Notification />
                             </section>
                             <section className='friend_request'>
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
-                                <FriendRequest />
+                                {userData.friendRequest.map(friendRequest => (
+                                    <FriendRequest friendRequest={friendRequest}/>
+                                ))}
                             </section>
                         </section>
 
                         <Router>
                             <Switch>
-                                <Route exact path='/' component={HomeNewsFeed} />
+                                <Route exact path='/' render={(props) => <HomeNewsFeed {...props} categpry={'home'}/>}/>
                                 <Route path='/user' render={(props) => <UserProfile {...props} navView={navView}/>} />
                             </Switch>
                         </Router>

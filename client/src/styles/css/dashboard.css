@@ -567,7 +567,6 @@
 @media only screen and (min-width: 1000px) {
   .dashboard main {
     display: flex;
-    height: 100vh;
     position: relative;
   }
   .dashboard main section {
@@ -583,7 +582,6 @@
   .dashboard main .newsFeed-section {
     width: 40%;
     max-width: 60%;
-    height: 100vh;
     margin-top: 0;
   }
   .dashboard main .newsFeed-section .new-Tweet {

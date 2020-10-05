@@ -4,7 +4,8 @@ import NewsFeeds from './news-feed';
 import NewTweet from './newTweet';
 
 
-const HomeNewsFeed = () => {
+const HomeNewsFeed = ({category}) => {
+
     const {userData} = useContext(USERDATA);
     return (  
         <section className='newsFeed-section main-active'>
@@ -12,9 +13,9 @@ const HomeNewsFeed = () => {
                 <NewTweet />
             </div>
             <div className='news-feed-container'>
-                {userData.posts.map(post=> (
+                {category==='user' ? userData.posts.map(post=> (
                     <NewsFeeds post={post} username={userData.username}/>
-                ))}
+                )) : null}
 
                 
             </div>

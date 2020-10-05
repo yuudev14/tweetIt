@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const FriendsSchema = new Schema({
+const FriendRequestSchema = new Schema({
     username : {
         type : String,
         required : true,
@@ -14,11 +14,7 @@ const FriendsSchema = new Schema({
     date : {
         type : Date,
         default : Date.now()
-    },
-    accepted : {
-        type : Boolean,
-        default : false
     }
 })
 
-module.exports = FriendsSchema;
+module.exports = FriendRequestSchema;

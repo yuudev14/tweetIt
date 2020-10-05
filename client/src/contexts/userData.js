@@ -5,6 +5,7 @@ export const USERDATA = createContext();
 const  UserData= (props) => {
     const [userData, dispatch] = useReducer(userDataReducer, {
         posts:[],
+        friendRequest : []
     });
     useEffect(() => {
         console.log(userData);

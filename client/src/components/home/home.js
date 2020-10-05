@@ -28,10 +28,11 @@ const Home = (props) => {
         err_retry_password : ''
     });
 
-    // useEffect(()=>{
-    //     console.log(registerErr);
+    useEffect(()=>{
+        console.log(registerErr);
+        
 
-    // }, [registerErr]);
+    }, [registerErr]);
 
     //show navigation in mobile
     const activateNav = () => {
@@ -75,6 +76,12 @@ const Home = (props) => {
                 }else{
                     setRegisterErr(res.data);
                 }
+                setRegisterInfo({
+                    username : '',
+                    email : '',
+                    password : '',
+                    retry_password : '',
+                });
             });
 
     };
@@ -142,7 +149,7 @@ const Home = (props) => {
                                 <button className='sign-up' onClick={chooseSignupForm}>Sign-up</button>
 
                             </div>
-                            {form === 'sign-up' ? <SignUp setRegisterForm={setRegisterForm} register={register}/> : <Login setLoginForm={setLoginForm} login={login}/>}
+                            {form === 'sign-up' ? <SignUp registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
                             
                             
 

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const postSchema = require('./post');
 const FriendsSchema = require('./friends');
 const notificationSchema = require('./notification');
+const FriendRequestSchema = require('./friendRequest');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -23,6 +24,7 @@ const UserSchema = new Schema({
     },
     posts : [postSchema],
     friends : [FriendsSchema],
+    friendRequest : [FriendRequestSchema],
     notifications : [notificationSchema]
 });
 
