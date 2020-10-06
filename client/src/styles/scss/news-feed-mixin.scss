@@ -66,6 +66,7 @@
     }
     .news-feed-container{ 
         
+        
         .news-feed{
             
             display: flex;
@@ -77,6 +78,7 @@
             background-color: white;
         
         }
+
         .profile_logo{
             width: 10%;
             img{
@@ -111,5 +113,71 @@
                 cursor: pointer;
             }
         }
+        .fa-heart{
+            &:hover{
+                color : red
+            }
+        }
+        .liked{
+            color : red;
+            &:hover{
+                color : $secondary
+            }
+        }
+        .comment-section{
+            height : 0;
+            overflow: hidden;
+            input{
+                width: 90%;
+                font-size: 0.9em;
+                outline: none;
+                border : none;
+                border-bottom: 1px solid rgb(148, 148, 148);
+                font-family: $secondaryFont, sans-serif;
+                margin-top: 10px;
+            }
+            .comment-container{
+                max-height: 300px;
+                overflow-y: auto;
+                width: 100%;
+                padding: 10px;
+            }
+            .comment-content{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin: 10px 0;
+                
+                .username-profile-comment{
+                    width: 10%;
+                    margin-bottom: auto;
+                    
+                    img{
+                        width: 100%;
+                    }
+                }
+                .comment{
+                    width: 85%;
+                    h3{
+                        font-size: 1em;
+                        font-family: $secondaryFont, sans-serif;
+                        color: $secondary;
+                    }
+                    p{
+                        font-size: 0.9em;
+                        font-family: $secondaryFont, sans-serif;
+                    }
+
+                }
+            }
+            
+        }
+        .comment-active{
+            height : max-content;
+        }
+        
     }
+    
 }
+

@@ -36,8 +36,8 @@ const Profile = (props) => {
             </div>
             <h1>Friend Suggestions</h1>
             <div className='friend_suggestion_container'>
-                {friendSuggestions.map(friend => (
-                    <FriendSuggestion friend={friend} setFriendSuggestion = {setFriendSuggestion}/>
+                {friendSuggestions.map((friend, i) => (
+                    <FriendSuggestion key={i} friend={friend} setFriendSuggestion = {setFriendSuggestion}/>
 
                 ))}
                 

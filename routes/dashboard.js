@@ -20,6 +20,38 @@ route.get('/user/:id', (req, res) => {
         .catch(err => console.log(err))
 });
 
+route.get('/news-feed/:id', (req, res) => {
+    let newsfeed = [];
+    User.findOne({_id : req.params.id}).lean()
+        .then(user =>{
+            user.posts.forEach(post =>{
+                post.username = user.username
+            })
+            newsfeed = [...newsfeed, ...user.posts]
+            const friends = user.friends.map(friend => {
+                return friend.username;
+            })
+            User.find({username : {$in : friends}}).lean()
+                .then(friends => {
+                    const friendsPost = friends.map(friend => {
+                        friend.posts.forEach(post => {
+                            post.username = friend.username;
+                        });
+                        return friend.posts
+                    });
+                    friendsPost.forEach(posts => {
+                        posts.forEach(post => {  
+                            newsfeed = [...newsfeed, post]
+                        });
+                    });
+                    newsfeed = newsfeed.sort((a, b) => new Date(b.date) - new Date(a.date))
+                    res.send(newsfeed);
+                });
+            
+            
+        });
+})
+
 route.post('/addTweet/:id', (req, res) => {
     const {tweet} = req.body;
     console.log(req.param.id)
@@ -105,7 +137,7 @@ route.post('/acceptFriend/:id',(req, res) => {
 });
 
 route.post(`/reject/:id`, (req, res) => {
-    const {_id, username} = req.body;
+    const {_id} = req.body;
     User.findOne({_id : req.params.id})
         .then(user => {
             User.findOne({_id})
@@ -119,6 +151,56 @@ route.post(`/reject/:id`, (req, res) => {
                 .then(user => {res.send(user)})
                 .catch(err => console.log(err));
         });
+});
+
+route.post('/like/:id', (req, res) => {
+    const {_id, username} = req.body;
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({username})
+                .then(postUser => {
+                    postUser.posts = postUser.posts.map(post =>{
+                        if(post._id.toString() === _id){
+                            if(post.Likes.find(likes => likes.username === user.username) === undefined){
+                                post.Likes.unshift({username : user.username})
+                                console.log('hi')
+                                
+                            }else{     
+                                post.Likes = post.Likes.filter(likes => likes.username !== user.username);
+                                console.log('no')
+                            };
+                        };
+                        return post;
+                    });
+                    
+                    postUser.save()
+                                .then((user) => res.send(user.posts.filter(post => post._id.toString() === _id)[0]))
+                                
+                                .catch(err => console.log(err));
+                    
+                });
+        });
+});
+
+route.post(`/add-comment/:id`, (req, res) => {
+    const {_id, comment, username} = req.body;
+
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({username})
+                .then(postUser => {
+                    postUser.posts = postUser.posts.map(post => {
+                        if(post._id.toString() === _id){
+                            post.comments.unshift({username : user.username, comment});
+                        };
+                        return post
+                    });
+                    postUser.save()
+                    .then((user) => res.send(user.posts.filter(post => post._id.toString() === _id)[0]))
+                    .catch(err => console.log(err));
+                });
+        });
+
 });
 
 

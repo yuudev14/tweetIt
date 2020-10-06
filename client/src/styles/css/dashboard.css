@@ -342,6 +342,64 @@
   color: #0074e1;
   cursor: pointer;
 }
+.dashboard main .news-feed-container .fa-heart:hover {
+  color: red;
+}
+.dashboard main .news-feed-container .liked {
+  color: red;
+}
+.dashboard main .news-feed-container .liked:hover {
+  color: #0074e1;
+}
+.dashboard main .news-feed-container .comment-section {
+  height: 0;
+  overflow: hidden;
+}
+.dashboard main .news-feed-container .comment-section input {
+  width: 90%;
+  font-size: 0.9em;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #949494;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 10px;
+}
+.dashboard main .news-feed-container .comment-section .comment-container {
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  padding: 10px;
+}
+.dashboard main .news-feed-container .comment-section .comment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .username-profile-comment {
+  width: 10%;
+  margin-bottom: auto;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .username-profile-comment img {
+  width: 100%;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment {
+  width: 85%;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment h3 {
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+  color: #0074e1;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment p {
+  font-size: 0.9em;
+  font-family: "Open Sans", sans-serif;
+}
+.dashboard main .news-feed-container .comment-active {
+  height: -webkit-max-content;
+  height: max-content;
+}
 .dashboard footer {
   background-color: white;
   border-top: 1px solid #d1d1d1;
@@ -562,6 +620,64 @@
 .dashboard .userHomeProfile-section .news-feed-container i:hover {
   color: #0074e1;
   cursor: pointer;
+}
+.dashboard .userHomeProfile-section .news-feed-container .fa-heart:hover {
+  color: red;
+}
+.dashboard .userHomeProfile-section .news-feed-container .liked {
+  color: red;
+}
+.dashboard .userHomeProfile-section .news-feed-container .liked:hover {
+  color: #0074e1;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section {
+  height: 0;
+  overflow: hidden;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section input {
+  width: 90%;
+  font-size: 0.9em;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #949494;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 10px;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-container {
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  padding: 10px;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .username-profile-comment {
+  width: 10%;
+  margin-bottom: auto;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .username-profile-comment img {
+  width: 100%;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment {
+  width: 85%;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment h3 {
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+  color: #0074e1;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment p {
+  font-size: 0.9em;
+  font-family: "Open Sans", sans-serif;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-active {
+  height: -webkit-max-content;
+  height: max-content;
 }
 
 @media only screen and (min-width: 1000px) {

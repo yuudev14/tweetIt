@@ -4,21 +4,27 @@ import Home from './components/home/home';
 import Dashboard from './components/dashboard/dashboard';
 import IsLoginProvider from './contexts/isLogin';
 import UserData from './contexts/userData';
+import NewsFeedContext from './contexts/news-feed-context';
 
 
 function App() {
   return (
     <Router>
       <IsLoginProvider>
-        <UserData>
-          <div className="App">
-            <Switch>
-                <Route path='/home' component={Home} />
-                <Route exact path='/' component={Dashboard} />
-                <Route exact path='/user' component={Dashboard} />
-            </Switch>  
-          </div>
+      <NewsFeedContext>
+      <UserData>
+          
+            <div className="App">
+              <Switch>
+                  <Route path='/home' component={Home} />
+                  <Route exact path='/' component={Dashboard} />
+                  <Route exact path='/user' component={Dashboard} />
+              </Switch>  
+            </div>
         </UserData>
+
+      </NewsFeedContext>
+        
       </IsLoginProvider>
     </Router>
     

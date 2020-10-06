@@ -22,7 +22,6 @@ const FriendRequest = ({friendRequest}) => {
     }
     const reject = () => {
         axios.post(`/dashboard/reject/${auth.code}`,{
-            username : friendRequest.username, 
             _id : friendRequest._id
         }).then(res => {
             axios.get(`/dashboard/user/${auth.code}`)

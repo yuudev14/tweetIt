@@ -9,10 +9,13 @@ import Notification from './dashboard-components/notification'
 import Profile from './dashboard-components/profile';
 import axios from 'axios';
 import { USERDATA } from '../../contexts/userData';
+import { NEWS_FEED } from '../../contexts/news-feed-context';
 
 const Dashboard = (props) => {
     const {auth} = useContext(IsLogin);
     const {userData, dispatch} = useContext(USERDATA);
+    const {dispatch_newsFeed} = useContext(NEWS_FEED);
+    
     useEffect(()=>{
         axios.get(`/dashboard/user/${auth.code}`)
             .then(res => {
