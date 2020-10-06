@@ -16,7 +16,8 @@ route.get('/user/:id', (req, res) => {
     User.findOne({_id : req.params.id})
         .then(user => {
             res.send(user);
-        });
+        })
+        .catch(err => console.log(err))
 });
 
 route.post('/addTweet/:id', (req, res) => {
@@ -27,7 +28,8 @@ route.post('/addTweet/:id', (req, res) => {
 
             user.posts.unshift({tweet});
             user.save()
-                .then(user => res.send(user));
+                .then(user => res.send(user))
+                .catch(err => console.log(err));
         })
         .catch(err => console.log(err))
 });
@@ -47,28 +49,77 @@ route.get('/friends-suggestion/:id', (req, res) => {
                     }));
                 });
 
-        });
+        })
+        .catch(err => console.log(err));
     
 });
 
 route.post('/add-friend/', (req, res) => {
     const {_id, username, user_id} = req.body;
-    console.log(req.body)
-    
+
     User.findOne({_id : user_id})
         .then(user => {
             User.findOne({_id})
             .then(addedUser => {
                 addedUser.friendRequest.unshift({_id: user._id, username : user.username});
                 addedUser.save()
-            })
+                .catch(err => console.log(err));
+            });
             user.friends.push({_id, username});
             user.save()
-                .then(user=> res.send(user));
+                .then(user=> res.send(user))
+                .catch(err => console.log(err));
         })
+        .catch(err => console.log(err));
 
 
 });
 
+route.post('/acceptFriend/:id',(req, res) => {
+    const {username, _id} = req.body;
+    console.log(req.body);
+    
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({_id})
+                .then(acceptedFriend=>{
+                    acceptedFriend.friends = acceptedFriend.friends.map(friend => {
+                        if(friend._id === req.params.id){
+                            friend.accepted = true
+                        }
+                        return friend
+                    });
+                    acceptedFriend.save()
 
-module.exports = route
+                })
+                .catch(err => console.log(err));
+            user.friends.unshift({username, _id, accepted : true});
+            
+            user.friendRequest = user.friendRequest.filter(friendRequest => friendRequest._id !== _id);
+            user.save()
+                .then(user => {res.send(user)})
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+
+});
+
+route.post(`/reject/:id`, (req, res) => {
+    const {_id, username} = req.body;
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({_id})
+                .then(rejectedFriend => {
+                    rejectedFriend.friends = rejectedFriend.friends.filter(friend => friend._id !== req.params.id);
+                    rejectedFriend.save()
+                        .then(user=>console.log(user));
+                });
+            user.friendRequest = user.friendRequest.filter(friend => friend._id !== _id)
+            user.save()
+                .then(user => {res.send(user)})
+                .catch(err => console.log(err));
+        });
+});
+
+
+module.exports = route;

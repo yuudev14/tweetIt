@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import HomeNewsFeed from '../dashboard/dashboard-components/NewsFeedandNewTweet';
 import user from '../../assets/user.png';
+import { USERDATA } from '../../contexts/userData';
 
 const UserProfile = ({navView}) => {
+    const {userData} = useContext(USERDATA);
     useEffect(()=>{
         document.querySelector('.dashboard footer').classList.remove('footer-nav-show');
         document.querySelector('.dashboard footer').classList.add('footer-nav-none');
@@ -29,7 +31,7 @@ const UserProfile = ({navView}) => {
                 <div className='profilePicAndBtn'>
                     <div className='prof-pic'>
                         <img src={user} />
-                        <p>Username</p>
+                        <p>{userData.username}</p>
 
 
 
