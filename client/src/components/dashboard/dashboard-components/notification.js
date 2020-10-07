@@ -2,7 +2,7 @@ import React from 'react';
 import heart from '../../../assets/heart.png';
 import user from '../../../assets/user.png'
 
-const Notification = () => {
+const Notification = ({notification}) => {
     return ( 
         <div className='notification'>
             
@@ -17,8 +17,7 @@ const Notification = () => {
                     <img src={user} />
 
                 </div>
-                <p className='notif-about'>kil liked a tweet you were mentioned in</p>
-                <p className='notif-info'>HAHAHHA ito parang tanga</p>
+                <p className='notif-about'><span className='username'>{notification.username}</span> {notification.about}</p>
 
             </div>
         </div>

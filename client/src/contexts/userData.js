@@ -6,20 +6,13 @@ import { NEWS_FEED } from './news-feed-context';
 
 export const USERDATA = createContext();
 const  UserData= (props) => {
-    const {auth} = useContext(IsLogin);
-    const {dispatch_newsFeed} = useContext(NEWS_FEED);
-    const [userData, dispatch] = useReducer(userDataReducer, {
+    const [userData, dispatchUser] = useReducer(userDataReducer, {
         posts:[],
         friendRequest : []
     });
-    useEffect(() => {
-        axios.get(`/dashboard/news-feed/${auth.code}`)
-            .then(res => {
-                dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
-            });
-    },[userData])
+    
     return ( 
-        <USERDATA.Provider value={{userData, dispatch}}>
+        <USERDATA.Provider value={{userData, dispatchUser}}>
             {props.children}
 
         </USERDATA.Provider>

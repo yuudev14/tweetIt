@@ -3,10 +3,12 @@ import user from '../../../assets/user.png';
 import axios from 'axios';
 import {IsLogin} from '../../../contexts/isLogin';
 import { USERDATA } from '../../../contexts/userData';
+import { NEWS_FEED } from '../../../contexts/news-feed-context';
 
 const NewTweet = () => {
     const {auth} = useContext(IsLogin);
-    const {userData, dispatch} = useContext(USERDATA);
+    const {newsFeed, dispatch_newsFeed} = useContext(NEWS_FEED);
+    const {userData, dispatchUser} = useContext(USERDATA);
     const [tweet, setTweet] = useState({
         image : '',
         tweet : ''
@@ -28,7 +30,11 @@ const NewTweet = () => {
                     ...tweet,
                     tweet : ''
                 });
-                dispatch({type : 'USERDATA', data : res.data});
+                dispatchUser({type : 'USERDATA', data : res.data});
+                axios.get(`/dashboard/news-feed/${auth.code}`)
+                    .then(res => {
+                        dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
+                    });
             });
 
 

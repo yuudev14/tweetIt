@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const notificationSchema = new Schema({
-    type : {
+    about : {
         type : String,
         required : true
     },
@@ -15,9 +15,9 @@ const notificationSchema = new Schema({
         type : Date,
         default : Date.now()
     },
-    post : {
+    post_id : {
         type : String,
-        required : true
+        
     }
 })
 

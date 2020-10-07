@@ -6,7 +6,7 @@ import { USERDATA } from '../../../contexts/userData';
 
 const FriendRequest = ({friendRequest}) => {
     const {auth} = useContext(IsLogin);
-    const {dispatch} = useContext(USERDATA);
+    const {dispatchUser} = useContext(USERDATA);
     const acceptFriend = () => {
         axios.post(`dashboard/acceptFriend/${auth.code}`, {
             username : friendRequest.username, 
@@ -14,11 +14,9 @@ const FriendRequest = ({friendRequest}) => {
         }).then(res => {
             axios.get(`/dashboard/user/${auth.code}`)
                 .then(res => {
-                    dispatch({type : 'USERDATA', data : res.data});
+                    dispatchUser({type : 'USERDATA', data : res.data});
                 });
         });
-
-        
     }
     const reject = () => {
         axios.post(`/dashboard/reject/${auth.code}`,{
@@ -26,7 +24,7 @@ const FriendRequest = ({friendRequest}) => {
         }).then(res => {
             axios.get(`/dashboard/user/${auth.code}`)
                 .then(res => {
-                    dispatch({type : 'USERDATA', data : res.data});
+                    dispatchUser({type : 'USERDATA', data : res.data});
                 });
         })
     }

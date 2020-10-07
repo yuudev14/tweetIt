@@ -28,11 +28,12 @@ route.get('/news-feed/:id', (req, res) => {
                 post.username = user.username
             })
             newsfeed = [...newsfeed, ...user.posts]
-            const friends = user.friends.map(friend => {
+            const friends = user.friends.filter(friend => friend.accepted === true).map(friend => {
                 return friend.username;
-            })
+            });
             User.find({username : {$in : friends}}).lean()
                 .then(friends => {
+
                     const friendsPost = friends.map(friend => {
                         friend.posts.forEach(post => {
                             post.username = friend.username;
@@ -94,6 +95,7 @@ route.post('/add-friend/', (req, res) => {
             User.findOne({_id})
             .then(addedUser => {
                 addedUser.friendRequest.unshift({_id: user._id, username : user.username});
+                
                 addedUser.save()
                 .catch(err => console.log(err));
             });
@@ -121,6 +123,7 @@ route.post('/acceptFriend/:id',(req, res) => {
                         }
                         return friend
                     });
+                    acceptedFriend.notifications.unshift({about : 'accepted your friend request', username: user.username});
                     acceptedFriend.save()
 
                 })
@@ -172,6 +175,11 @@ route.post('/like/:id', (req, res) => {
                         };
                         return post;
                     });
+                    if(username !== user.username){
+                        postUser.notifications.unshift({about : 'like your post', username: user.username, post_id : _id});
+
+                    }
+                    
                     
                     postUser.save()
                                 .then((user) => res.send(user.posts.filter(post => post._id.toString() === _id)[0]))
@@ -195,6 +203,11 @@ route.post(`/add-comment/:id`, (req, res) => {
                         };
                         return post
                     });
+                    if(username !== user.username){
+                        postUser.notifications.unshift({about : 'commented on your post', username: user.username, post_id : _id});
+
+                    }
+                    
                     postUser.save()
                     .then((user) => res.send(user.posts.filter(post => post._id.toString() === _id)[0]))
                     .catch(err => console.log(err));
@@ -202,6 +215,14 @@ route.post(`/add-comment/:id`, (req, res) => {
         });
 
 });
+
+route.get('/notifications/:id', (req, res) => {
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            console.log(user.notifications)
+            res.send(user.notifications);
+        })
+})
 
 
 module.exports = route;

@@ -18,7 +18,7 @@ const HomeNewsFeed = ({category}) => {
         .then(res => {
             dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
         });
-    })
+    },[]);
     return (  
         <section className='newsFeed-section main-active'>
             <div className='new-Tweet'>

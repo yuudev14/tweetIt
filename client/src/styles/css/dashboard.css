@@ -165,6 +165,7 @@
 .dashboard main .notification-section .notification-container .notification {
   display: flex;
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 .dashboard main .notification-section .notification-container .notification-type {
   width: 20%;
@@ -185,6 +186,10 @@
 }
 .dashboard main .notification-section .notification-container .notification-content .notif-info {
   color: #838383;
+}
+.dashboard main .notification-section .notification-container .notification-content .username {
+  font-weight: bold;
+  color: #0074e1;
 }
 .dashboard main .notification-section section {
   overflow-y: auto;

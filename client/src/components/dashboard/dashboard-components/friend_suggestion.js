@@ -6,7 +6,7 @@ import { USERDATA } from '../../../contexts/userData';
 
 const FriendSuggestion = ({friend, setFriendSuggestion}) => {
     const {auth} = useContext(IsLogin);
-    const {dispatch} = useContext(USERDATA);
+    const {dispatchUser} = useContext(USERDATA);
 
     const addFriend = () => {
         axios.post('/dashboard/add-friend',{
@@ -15,7 +15,7 @@ const FriendSuggestion = ({friend, setFriendSuggestion}) => {
             user_id : auth.code
         })
             .then(res => {
-                dispatch({type: 'USERDATA', data : res.data});
+                dispatchUser({type: 'USERDATA', data : res.data});
                 axios.get(`/dashboard/friends-suggestion/${auth.code}`)
                     .then(res =>{
                         setFriendSuggestion(res.data);

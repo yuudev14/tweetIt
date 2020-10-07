@@ -34,6 +34,7 @@
             .notification{
                 display: flex;
                 overflow-y: auto;
+                margin-bottom: 20px;
                 
             }
             .notification-type{
@@ -55,6 +56,10 @@
                 }
                 .notif-info{
                     color : rgb(131, 131, 131);
+                }
+                .username{
+                    font-weight: bold;
+                    color: $secondary;
                 }
             }
         }

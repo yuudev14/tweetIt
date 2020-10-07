@@ -5,10 +5,12 @@ import axios from 'axios';
 import { IsLogin } from '../../../contexts/isLogin';
 import {withRouter, Link} from 'react-router-dom';
 import { USERDATA } from '../../../contexts/userData';
+import { NEWS_FEED } from '../../../contexts/news-feed-context';
 
 const Profile = (props) => {
-    const {userData} = useContext(USERDATA)
+    const {userData, dispatchUser} = useContext(USERDATA);
     const {auth, dispatch} = useContext(IsLogin);
+    const {dispatch_newsFeed} = useContext(NEWS_FEED);
     const [friendSuggestions, setFriendSuggestion] = useState([{username : '', _id : ''}]);
     useEffect(() => {
         axios.get(`/dashboard/friends-suggestion/${auth.code}`)
@@ -21,6 +23,8 @@ const Profile = (props) => {
             .then(res => {
                 dispatch({type : 'LOGOUT'});
                 props.history.push('/home');
+                dispatchUser({type: 'RESET'});
+                dispatch_newsFeed({type: 'RESET'});
 
             })
     }

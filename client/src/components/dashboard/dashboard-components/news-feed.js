@@ -10,7 +10,7 @@ const NewsFeeds = ({post, username}) => {
     const [commentInput, setCommentInput] = useState('');
 
     const {auth} = useContext(IsLogin);
-    const {userData, dispatch} = useContext(USERDATA);
+    const {userData} = useContext(USERDATA);
 
     useEffect(() => {
         console.log(statePost);

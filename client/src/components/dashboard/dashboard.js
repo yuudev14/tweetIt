@@ -13,13 +13,25 @@ import { NEWS_FEED } from '../../contexts/news-feed-context';
 
 const Dashboard = (props) => {
     const {auth} = useContext(IsLogin);
-    const {userData, dispatch} = useContext(USERDATA);
+    const {userData, dispatchUser} = useContext(USERDATA);
     const {dispatch_newsFeed} = useContext(NEWS_FEED);
+    const [notification, setNotification] = useState([1]);
     
     useEffect(()=>{
+        console.log('hi')
         axios.get(`/dashboard/user/${auth.code}`)
             .then(res => {
-                dispatch({type : 'USERDATA', data : res.data});
+                dispatchUser({type : 'USERDATA', data : res.data});
+                axios.get(`/dashboard/news-feed/${auth.code}`)
+                    .then(res => {
+                        dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
+                    });
+                axios.get(`/dashboard/notifications/${auth.code}`)
+                    .then(res => {
+                        console.log(res);
+                        setNotification(res.data);
+                    })
+                
             });
         
     },[])
@@ -70,12 +82,7 @@ const Dashboard = (props) => {
                                 className='friend_request'>Friend Request</button>
                             </div>
                             <section className='notification-container notif-container-active'>
-                                <Notification />
-                                <Notification />
-                                <Notification />
-                                <Notification />
-                                <Notification />
-                                <Notification />
+                                {notification.map(notif => <Notification notification={notif}/> )}
                             </section>
                             <section className='friend_request'>
                                 {userData.friendRequest.map(friendRequest => (
