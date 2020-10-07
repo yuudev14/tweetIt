@@ -15,7 +15,7 @@ const Dashboard = (props) => {
     const {auth} = useContext(IsLogin);
     const {userData, dispatchUser} = useContext(USERDATA);
     const {dispatch_newsFeed} = useContext(NEWS_FEED);
-    const [notification, setNotification] = useState([1]);
+    const [notification, setNotification] = useState([]);
     
     useEffect(()=>{
         console.log('hi')
@@ -95,6 +95,8 @@ const Dashboard = (props) => {
                             <Switch>
                                 <Route exact path='/' render={(props) => <HomeNewsFeed {...props} categpry={'home'}/>}/>
                                 <Route path='/user' render={(props) => <UserProfile {...props} navView={navView}/>} />
+                                <Route path='/:id' render={(props) => <UserProfile {...props} navView={navView}/>} />
+                                
                             </Switch>
                         </Router>
                         

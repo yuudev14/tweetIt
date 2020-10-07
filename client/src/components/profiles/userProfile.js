@@ -1,7 +1,10 @@
 import React, {useEffect, useContext} from 'react';
 import HomeNewsFeed from '../dashboard/dashboard-components/NewsFeedandNewTweet';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import user from '../../assets/user.png';
 import { USERDATA } from '../../contexts/userData';
+import OtherProfile from './userProfileComponent/otherProfile';
+import OwnProfile from './userProfileComponent/ownProfile';
 
 const UserProfile = ({navView}) => {
     const {userData} = useContext(USERDATA);
@@ -19,38 +22,17 @@ const UserProfile = ({navView}) => {
             navView('newsFeed-section footer-active fa fa-home', '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' );
             document.querySelector('main .profile_suggestion-section').classList.remove('main-active');
         } 
-
     }, [])
     
     return ( 
-        <section className='userHomeProfile-section'>
-            <div className='Userpicture'>
-                <div className='coverPhoto'>
-
-                </div>
-                <div className='profilePicAndBtn'>
-                    <div className='prof-pic'>
-                        <img src={user} />
-                        <p>{userData.username}</p>
-
-
-
-                    </div>
-                    <button>Edit Profile</button>
-
-                </div>
+        <Router>
+            <Switch>
+                <Route exact path='/user' component={OwnProfile}/>
+                <Route path='/:id' component={OtherProfile}/>
                 
-
-            </div>
-            <div className='friend-total-container'>
-                <h3>Friends</h3>
-                <button>See All</button>
-            </div>
-            <div className='user-posts'>
-                <HomeNewsFeed category='user' />
-            </div>
-
-        </section>
+                
+            </Switch>
+        </Router>
      );
 }
  

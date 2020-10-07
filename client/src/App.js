@@ -18,7 +18,8 @@ function App() {
               <Switch>
                   <Route path='/home' component={Home} />
                   <Route exact path='/' component={Dashboard} />
-                  <Route exact path='/user' component={Dashboard} />
+                  <Route path='/user' component={Dashboard} />
+                  <Route path='/:id' component={Dashboard} />
               </Switch>  
             </div>
         </UserData>

@@ -31,6 +31,9 @@
         }
         .notification-container{
             padding-bottom: 70px;
+            a{
+                color : black
+            }
             .notification{
                 display: flex;
                 overflow-y: auto;
@@ -48,6 +51,7 @@
             
             .notification-content{
                 width: 80%;
+                
                 img{
                     width: 15%;
                 }

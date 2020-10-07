@@ -162,6 +162,9 @@
 .dashboard main .notification-section .notification-container {
   padding-bottom: 70px;
 }
+.dashboard main .notification-section .notification-container a {
+  color: black;
+}
 .dashboard main .notification-section .notification-container .notification {
   display: flex;
   overflow-y: auto;

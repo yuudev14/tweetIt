@@ -4,6 +4,7 @@ import { IsLogin } from '../../../contexts/isLogin';
 import axios from 'axios';
 import { USERDATA } from '../../../contexts/userData';
 import Comment from './comment';
+import {Link} from 'react-router-dom';
 
 const NewsFeeds = ({post, username}) => {
     const [statePost, setPost] = useState(post);
@@ -47,6 +48,7 @@ const NewsFeeds = ({post, username}) => {
     const setComment = (e) => {
         setCommentInput(e.target.value);
     }
+    const link = username === userData.username ? 'user' : username;
     return (
         <div className='news-feed'>
             <div className='profile_logo'>
@@ -56,7 +58,7 @@ const NewsFeeds = ({post, username}) => {
             </div>
             <div className='feed-content'>
                 <div className='feed-user-info'>
-                    <p className='feed-username'>{username}</p>
+                    <Link to={`/${link}`}><p className='feed-username'>{username}</p></Link>
                     <p className='date'>10/06/20</p>
                 </div>
                 <div className='tweet-content'>
