@@ -19,7 +19,13 @@ route.get('/user/:id', (req, res) => {
         })
         .catch(err => console.log(err))
 });
-
+route.get('/other-user/:username', (req, res) => {
+    User.findOne({username : req.params.username})
+        .then(user => {
+            res.send(user);
+        })
+        .catch(err => console.log(err))
+});
 route.get('/news-feed/:id', (req, res) => {
     let newsfeed = [];
     User.findOne({_id : req.params.id}).lean()
@@ -147,7 +153,7 @@ route.post(`/reject/:id`, (req, res) => {
                 .then(rejectedFriend => {
                     rejectedFriend.friends = rejectedFriend.friends.filter(friend => friend._id !== req.params.id);
                     rejectedFriend.save()
-                        .then(user=>console.log(user));
+                        
                 });
             user.friendRequest = user.friendRequest.filter(friend => friend._id !== _id)
             user.save()
@@ -165,12 +171,12 @@ route.post('/like/:id', (req, res) => {
                     postUser.posts = postUser.posts.map(post =>{
                         if(post._id.toString() === _id){
                             if(post.Likes.find(likes => likes.username === user.username) === undefined){
-                                post.Likes.unshift({username : user.username})
-                                console.log('hi')
+                                post.Likes.unshift({username : user.username});
+                              
                                 
                             }else{     
                                 post.Likes = post.Likes.filter(likes => likes.username !== user.username);
-                                console.log('no')
+                                
                             };
                         };
                         return post;
@@ -219,10 +225,11 @@ route.post(`/add-comment/:id`, (req, res) => {
 route.get('/notifications/:id', (req, res) => {
     User.findOne({_id : req.params.id})
         .then(user => {
-            console.log(user.notifications)
             res.send(user.notifications);
-        })
-})
+        });
+});
+
+
 
 
 module.exports = route;

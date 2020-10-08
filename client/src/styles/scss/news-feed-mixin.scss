@@ -92,6 +92,37 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            position: relative;
+            .date{
+                margin-left: auto;
+            }
+            .dropdownOption{
+                // height: 100px;
+                // width: 100px;
+                height: 0;
+                overflow: hidden;
+                right: 0;
+                top: 20px;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                transition: 0.5s;
+                z-index: 10;
+                button{
+                    margin: 5px;
+                    outline: none;
+                    border: none;
+                    background-color: $secondary;
+                    color: white;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
+
+
+            }
+            .dropdown-active{
+                height: 70px !important;
+            }
             .feed-username{
                 font-weight: bolder;
                 color: $secondary;
@@ -163,10 +194,54 @@
                         font-size: 1em;
                         font-family: $secondaryFont, sans-serif;
                         color: $secondary;
+                        display: inline;
                     }
-                    p{
+                    .username-and-options{
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: relative;
+                        .dropdownOption{
+                            // height: 100px;
+                            // width: 100px;
+                            height: 0;
+                            overflow: hidden;
+                            right: 0;
+                            top: 20px;
+                            display: flex;
+                            
+                            position: absolute;
+                            transition: 0.5s;
+                            z-index: 10;
+                            button{
+                                margin: 5px;
+                                width: 50px;
+                                outline: none;
+                                border: none;
+                                background-color: $secondary;
+                                color: white;
+                                padding: 5px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+    
+    
+                        }
+                    }
+                    .dropdown-active{
+                        transition: 0.5s;
+                        height: max-content !important;
+                    }
+                    
+                    i{
+                        right: 0;
+                    }
+                    input{
                         font-size: 0.9em;
                         font-family: $secondaryFont, sans-serif;
+                        border-bottom: none;
+                        background-color: transparent;
                     }
 
                 }

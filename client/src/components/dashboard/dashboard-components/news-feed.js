@@ -4,18 +4,49 @@ import { IsLogin } from '../../../contexts/isLogin';
 import axios from 'axios';
 import { USERDATA } from '../../../contexts/userData';
 import Comment from './comment';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import { NEWS_FEED } from '../../../contexts/news-feed-context';
 
-const NewsFeeds = ({post, username}) => {
-    const [statePost, setPost] = useState(post);
+const NewsFeeds = (props) => {
+    const {post, username,index} = props;
+    
+    const {newsFeed} = useContext(NEWS_FEED);
+    const [statePost, setPost] = useState({
+        _id : '',
+        Likes : [],
+        comments : [],
+
+    });
     const [commentInput, setCommentInput] = useState('');
 
     const {auth} = useContext(IsLogin);
     const {userData} = useContext(USERDATA);
 
+    // useEffect(() => {
+    //     console.log(statePost);
+    // },[statePost])
     useEffect(() => {
-        console.log(statePost);
-    },[statePost])
+        setPost(post);
+        if(props.match.params.id){
+            if(index === 0){
+                axios.get(`/dashboard/other-user/${props.match.params.id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        setPost(res.data.posts[0]);
+                    });
+            }
+    
+        }
+    },[]);
+
+    
+    if(!props.match.params.id){
+        if(statePost._id !== newsFeed[index]._id){
+            setPost(newsFeed[index])
+        }
+    }
+
+    
 
     const like = () => {
         axios.post(`/dashboard/like/${auth.code}`, {
@@ -48,6 +79,12 @@ const NewsFeeds = ({post, username}) => {
     const setComment = (e) => {
         setCommentInput(e.target.value);
     }
+
+    const dropdownToggle = (e) => {
+        document.querySelectorAll('.news-feed .dropdownOption').forEach(d => d === e.target.nextSibling ?
+             d.classList.toggle('dropdown-active') : d.classList.remove('dropdown-active'))
+        // e.target.nextSibling.classList.toggle('dropdown-active')
+    }
     const link = username === userData.username ? 'user' : username;
     return (
         <div className='news-feed'>
@@ -60,6 +97,19 @@ const NewsFeeds = ({post, username}) => {
                 <div className='feed-user-info'>
                     <Link to={`/${link}`}><p className='feed-username'>{username}</p></Link>
                     <p className='date'>10/06/20</p>
+                    {userData.username === username ? (
+                        <>
+                            <i onClick={dropdownToggle } className='fa fa-angle-down'></i>
+                            <div className='dropdownOption'>
+                                
+                                <button>Delete</button>
+                                <button>Edit</button>
+                                
+
+                            </div>
+                        </>
+                    ) : null}
+                    
                 </div>
                 <div className='tweet-content'>
                     <p>{statePost.tweet}</p>
@@ -85,7 +135,7 @@ const NewsFeeds = ({post, username}) => {
                     </form>
                     <div className='comment-container'>
                     {statePost.comments.map((comment, i) => (
-                        <Comment key={i} comment={comment.comment} username={comment.username} />
+                        <Comment key={i} id={comment._id} comment={comment.comment} username={comment.username} postOwner={statePost.username}/>
                     ))}
 
                     </div>
@@ -96,4 +146,4 @@ const NewsFeeds = ({post, username}) => {
       );
 }
  
-export default NewsFeeds;
+export default withRouter(NewsFeeds);

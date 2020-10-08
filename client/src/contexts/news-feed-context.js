@@ -1,9 +1,10 @@
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useReducer, useEffect} from 'react';
 import { newsFeedReducer } from './reducers/news-feedReducer';
 
 export const NEWS_FEED = createContext()
 const NewsFeedContext = (props) => {
-    const [newsFeed, dispatch_newsFeed] = useReducer(newsFeedReducer, []);
+    const [newsFeed, dispatch_newsFeed] = useReducer(newsFeedReducer, null);
+
 
     return ( 
         <NEWS_FEED.Provider value={{newsFeed, dispatch_newsFeed}}>

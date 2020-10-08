@@ -26,8 +26,8 @@ const HomeNewsFeed = ({category}) => {
             </div>
             <div className='news-feed-container'>
                 {category==='user' ? userData.posts.map((post, i)=> (
-                    <NewsFeeds key={i} post={post} username={userData.username}/>
-                )) : newsFeed.map((post,i) => <NewsFeeds key={i} post={post} username={post.username}/>)}
+                    <NewsFeeds key={i} post={post} index = {i} username={userData.username}/>
+                )) : newsFeed? newsFeed.map((post,i) => <NewsFeeds key={i} index = {i} post={post} username={post.username}/>) : null}
 
                 
             </div>

@@ -329,6 +329,33 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  position: relative;
+}
+.dashboard main .news-feed-container .feed-user-info .date {
+  margin-left: auto;
+}
+.dashboard main .news-feed-container .feed-user-info .dropdownOption {
+  height: 0;
+  overflow: hidden;
+  right: 0;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 10;
+}
+.dashboard main .news-feed-container .feed-user-info .dropdownOption button {
+  margin: 5px;
+  outline: none;
+  border: none;
+  background-color: #0074e1;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.dashboard main .news-feed-container .feed-user-info .dropdown-active {
+  height: 70px !important;
 }
 .dashboard main .news-feed-container .feed-user-info .feed-username {
   font-weight: bolder;
@@ -399,10 +426,49 @@
   font-size: 1em;
   font-family: "Open Sans", sans-serif;
   color: #0074e1;
+  display: inline;
 }
-.dashboard main .news-feed-container .comment-section .comment-content .comment p {
+.dashboard main .news-feed-container .comment-section .comment-content .comment .username-and-options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment .username-and-options .dropdownOption {
+  height: 0;
+  overflow: hidden;
+  right: 0;
+  top: 20px;
+  display: flex;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 10;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment .username-and-options .dropdownOption button {
+  margin: 5px;
+  width: 50px;
+  outline: none;
+  border: none;
+  background-color: #0074e1;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment .dropdown-active {
+  transition: 0.5s;
+  height: -webkit-max-content !important;
+  height: max-content !important;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment i {
+  right: 0;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment input {
   font-size: 0.9em;
   font-family: "Open Sans", sans-serif;
+  border-bottom: none;
+  background-color: transparent;
 }
 .dashboard main .news-feed-container .comment-active {
   height: -webkit-max-content;
@@ -608,6 +674,33 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  position: relative;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .date {
+  margin-left: auto;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .dropdownOption {
+  height: 0;
+  overflow: hidden;
+  right: 0;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 10;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .dropdownOption button {
+  margin: 5px;
+  outline: none;
+  border: none;
+  background-color: #0074e1;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .dropdown-active {
+  height: 70px !important;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info .feed-username {
   font-weight: bolder;
@@ -678,10 +771,49 @@
   font-size: 1em;
   font-family: "Open Sans", sans-serif;
   color: #0074e1;
+  display: inline;
 }
-.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment p {
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment .username-and-options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment .username-and-options .dropdownOption {
+  height: 0;
+  overflow: hidden;
+  right: 0;
+  top: 20px;
+  display: flex;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 10;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment .username-and-options .dropdownOption button {
+  margin: 5px;
+  width: 50px;
+  outline: none;
+  border: none;
+  background-color: #0074e1;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment .dropdown-active {
+  transition: 0.5s;
+  height: -webkit-max-content !important;
+  height: max-content !important;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment i {
+  right: 0;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment input {
   font-size: 0.9em;
   font-family: "Open Sans", sans-serif;
+  border-bottom: none;
+  background-color: transparent;
 }
 .dashboard .userHomeProfile-section .news-feed-container .comment-active {
   height: -webkit-max-content;

@@ -85,9 +85,9 @@ const Dashboard = (props) => {
                                 {notification.map(notif => <Notification notification={notif}/> )}
                             </section>
                             <section className='friend_request'>
-                                {userData.friendRequest.map(friendRequest => (
+                                {userData.friendRequest ? userData.friendRequest.map(friendRequest => (
                                     <FriendRequest friendRequest={friendRequest}/>
-                                ))}
+                                )) : null}
                             </section>
                         </section>
 
