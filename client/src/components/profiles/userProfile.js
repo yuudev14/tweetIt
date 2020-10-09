@@ -6,6 +6,7 @@ import { USERDATA } from '../../contexts/userData';
 import OtherProfile from './userProfileComponent/otherProfile';
 import OwnProfile from './userProfileComponent/ownProfile';
 
+
 const UserProfile = ({navView}) => {
     const {userData} = useContext(USERDATA);
     useEffect(()=>{

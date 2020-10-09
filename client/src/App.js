@@ -8,6 +8,7 @@ import NewsFeedContext from './contexts/news-feed-context';
 
 
 function App() {
+  
   return (
     <Router>
       <IsLoginProvider>

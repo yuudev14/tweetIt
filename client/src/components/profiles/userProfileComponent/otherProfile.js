@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import user from '../../../assets/user.png';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
@@ -28,6 +28,7 @@ const OtherProfile = (props) => {
 
 
     return ( 
+        
         <section className='userHomeProfile-section'>
             <div className='Userpicture'>
                 <div className='coverPhoto'>
@@ -41,7 +42,6 @@ const OtherProfile = (props) => {
 
 
                     </div>
-                    <button>Edit Profile</button>
 
                 </div>
                 

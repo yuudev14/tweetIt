@@ -17,6 +17,7 @@
         nav{
             display: flex;
             justify-content: space-around;
+            position: relative;
         }
         .logo a{
             
@@ -40,6 +41,29 @@
         }
         .dashboard-options{
             display: none;
+        }
+        .search-list{
+            position: absolute;
+            right: 17%;
+            top: 30px;
+            background-color: white;
+            padding: 10px;
+            max-height: 200px;
+            width: 200px;
+            ul{
+                list-style-type: none;
+            }
+            a{
+                color: $secondary;
+            }
+            li{
+                font-family: $secondaryFont, sans-serif;
+                margin: 10px;
+            }
+            display: none;
+        }
+        .search-list-active{
+            display: block;
         }
     }
     

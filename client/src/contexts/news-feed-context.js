@@ -3,7 +3,11 @@ import { newsFeedReducer } from './reducers/news-feedReducer';
 
 export const NEWS_FEED = createContext()
 const NewsFeedContext = (props) => {
-    const [newsFeed, dispatch_newsFeed] = useReducer(newsFeedReducer, null);
+    const [newsFeed, dispatch_newsFeed] = useReducer(newsFeedReducer, [{
+        _id : '',
+        comments : [],
+        Likes : []
+    }]);
 
 
     return ( 

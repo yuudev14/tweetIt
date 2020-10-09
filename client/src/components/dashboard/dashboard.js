@@ -16,6 +16,7 @@ const Dashboard = (props) => {
     const {userData, dispatchUser} = useContext(USERDATA);
     const {dispatch_newsFeed} = useContext(NEWS_FEED);
     const [notification, setNotification] = useState([]);
+    const [searchList, setSearchList] = useState([]);
     
     useEffect(()=>{
         console.log('hi')
@@ -35,6 +36,7 @@ const Dashboard = (props) => {
             });
         
     },[])
+
     const navView = (className, liClass, sectionClass, liActive, sectionctive) => {
         const li = document.querySelectorAll(liClass);
         const section = document.querySelectorAll(sectionClass);
@@ -51,6 +53,30 @@ const Dashboard = (props) => {
     const newTweetToggle=()=>{
         document.querySelector('.new-Tweet').classList.toggle('active-new-tweet');
     }
+    const search = (e) => {
+        if(e.target.value !==''){
+            document.querySelector('.search-list').classList.add('search-list-active')
+        }else{
+            document.querySelector('.search-list').classList.remove('search-list-active')
+        }
+        axios.get(`/dashboard/search?search=${e.target.value}`)
+            .then(res => {
+                setSearchList(res.data);
+            });
+        
+    }
+
+    const emptySearch = () => {
+        document.querySelector('#search').value = '';
+        document.querySelector('.search-list').classList.remove('search-list-active')
+    }
+    const home = () => {
+        axios.get(`/dashboard/news-feed/${auth.code}`)
+            .then(res => {
+                dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
+            });
+    }
+
     return ( 
         <div className='dashboard'>
             {!auth.isAuth ? (<Redirect to='/home'/>) : (
@@ -58,18 +84,29 @@ const Dashboard = (props) => {
                     <header>
                         <nav>
                             <div className='logo'>
-                                <Link to='/'><h1>tweetIt</h1></Link>
+                                <Link onClick={home} to='/'><h1>tweetIt</h1></Link>
                             </div>
                             <label htmlFor='search' className='search'>
                                 <label className='fa fa-search' htmlFor='search'></label>
-                                <input type='text' id='search'/>
+                                <input onChange={search} type='text' id='search' autocomplete="off"/>
                             </label>
-                            <div className='dashboard-options'>
+                            <div className='search-list'>
+                                <ul>
+                                    {searchList.map(search =>{
+                                        let link = search.username === userData.username ? '/user' : `/${search.username}`;
+                                        return (<Link onClick={emptySearch} to={link}><li>{search.username}</li></Link>)
+                                    })}
+                                   
+                                </ul>
+
+                            </div>
+
+                            {/* <div className='dashboard-options'>
                                 <ul>
                                     <li></li>
                                 </ul>
 
-                            </div>
+                            </div> */}
                             
                         </nav>
                     </header>
@@ -82,7 +119,7 @@ const Dashboard = (props) => {
                                 className='friend_request'>Friend Request</button>
                             </div>
                             <section className='notification-container notif-container-active'>
-                                {notification.map(notif => <Notification notification={notif}/> )}
+                                {notification.map(notif => <Notification username={userData.username} notification={notif}/> )}
                             </section>
                             <section className='friend_request'>
                                 {userData.friendRequest ? userData.friendRequest.map(friendRequest => (
@@ -95,7 +132,9 @@ const Dashboard = (props) => {
                             <Switch>
                                 <Route exact path='/' render={(props) => <HomeNewsFeed {...props} categpry={'home'}/>}/>
                                 <Route path='/user' render={(props) => <UserProfile {...props} navView={navView}/>} />
+                                <Route path='/post' render={(props) => <UserProfile {...props} navView={navView}/>} />
                                 <Route path='/:id' render={(props) => <UserProfile {...props} navView={navView}/>} />
+                                
                                 
                             </Switch>
                         </Router>

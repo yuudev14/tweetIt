@@ -18,6 +18,7 @@
 .dashboard header nav {
   display: flex;
   justify-content: space-around;
+  position: relative;
 }
 .dashboard header .logo a {
   color: #0074e1;
@@ -39,6 +40,29 @@
 }
 .dashboard header .dashboard-options {
   display: none;
+}
+.dashboard header .search-list {
+  position: absolute;
+  right: 17%;
+  top: 30px;
+  background-color: white;
+  padding: 10px;
+  max-height: 200px;
+  width: 200px;
+  display: none;
+}
+.dashboard header .search-list ul {
+  list-style-type: none;
+}
+.dashboard header .search-list a {
+  color: #0074e1;
+}
+.dashboard header .search-list li {
+  font-family: "Open Sans", sans-serif;
+  margin: 10px;
+}
+.dashboard header .search-list-active {
+  display: block;
 }
 .dashboard main {
   min-height: 100%;
@@ -315,6 +339,9 @@
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
   background-color: white;
+  width: 100%;
+  height: -webkit-max-content;
+  height: max-content;
 }
 .dashboard main .news-feed-container .profile_logo {
   width: 10%;
@@ -324,6 +351,26 @@
 }
 .dashboard main .news-feed-container .feed-content {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.dashboard main .news-feed-container .feed-content p {
+  width: 100%;
+}
+.dashboard main .news-feed-container .tweet-content textarea {
+  width: 90%;
+  font-family: "Open Sans", sans-serif;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  resize: vertical;
+  display: none;
+  color: grey;
+}
+.dashboard main .news-feed-container .tweet-content .pop {
+  display: block;
 }
 .dashboard main .news-feed-container .feed-user-info {
   display: flex;
@@ -464,11 +511,21 @@
 .dashboard main .news-feed-container .comment-section .comment-content .comment i {
   right: 0;
 }
+.dashboard main .news-feed-container .comment-section .comment-content .comment p {
+  font-size: 0.9em;
+  font-family: "Open Sans", sans-serif;
+}
 .dashboard main .news-feed-container .comment-section .comment-content .comment input {
   font-size: 0.9em;
   font-family: "Open Sans", sans-serif;
   border-bottom: none;
   background-color: transparent;
+  display: none;
+  border-top: 1px solid #0074e1;
+  color: gray;
+}
+.dashboard main .news-feed-container .comment-section .comment-content .comment .inputPop {
+  display: block;
 }
 .dashboard main .news-feed-container .comment-active {
   height: -webkit-max-content;
@@ -660,6 +717,9 @@
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
   background-color: white;
+  width: 100%;
+  height: -webkit-max-content;
+  height: max-content;
 }
 .dashboard .userHomeProfile-section .news-feed-container .profile_logo {
   width: 10%;
@@ -669,6 +729,26 @@
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-content {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-content p {
+  width: 100%;
+}
+.dashboard .userHomeProfile-section .news-feed-container .tweet-content textarea {
+  width: 90%;
+  font-family: "Open Sans", sans-serif;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  resize: vertical;
+  display: none;
+  color: grey;
+}
+.dashboard .userHomeProfile-section .news-feed-container .tweet-content .pop {
+  display: block;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info {
   display: flex;
@@ -809,11 +889,21 @@
 .dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment i {
   right: 0;
 }
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment p {
+  font-size: 0.9em;
+  font-family: "Open Sans", sans-serif;
+}
 .dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment input {
   font-size: 0.9em;
   font-family: "Open Sans", sans-serif;
   border-bottom: none;
   background-color: transparent;
+  display: none;
+  border-top: 1px solid #0074e1;
+  color: gray;
+}
+.dashboard .userHomeProfile-section .news-feed-container .comment-section .comment-content .comment .inputPop {
+  display: block;
 }
 .dashboard .userHomeProfile-section .news-feed-container .comment-active {
   height: -webkit-max-content;

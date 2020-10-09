@@ -10,7 +10,7 @@ import { NEWS_FEED } from '../../../contexts/news-feed-context';
 const NewsFeeds = (props) => {
     const {post, username,index} = props;
     
-    const {newsFeed} = useContext(NEWS_FEED);
+    const {newsFeed, dispatch_newsFeed} = useContext(NEWS_FEED);
     const [statePost, setPost] = useState({
         _id : '',
         Likes : [],
@@ -18,13 +18,14 @@ const NewsFeeds = (props) => {
 
     });
     const [commentInput, setCommentInput] = useState('');
+    const [postContent, setPostContent] = useState('')
 
     const {auth} = useContext(IsLogin);
-    const {userData} = useContext(USERDATA);
+    const {userData, dispatchUser} = useContext(USERDATA);
 
-    // useEffect(() => {
-    //     console.log(statePost);
-    // },[statePost])
+    useEffect(() => {
+        setPostContent(statePost.tweet);
+    },[statePost])
     useEffect(() => {
         setPost(post);
         if(props.match.params.id){
@@ -40,7 +41,8 @@ const NewsFeeds = (props) => {
     },[]);
 
     
-    if(!props.match.params.id){
+    if(!props.match.params.id && newsFeed[index]){
+        console.log(newsFeed[index])
         if(statePost._id !== newsFeed[index]._id){
             setPost(newsFeed[index])
         }
@@ -86,6 +88,49 @@ const NewsFeeds = (props) => {
         // e.target.nextSibling.classList.toggle('dropdown-active')
     }
     const link = username === userData.username ? 'user' : username;
+    const deleting = () => {
+        axios.post(`dashboard/delete-post/${auth.code}`,{post_id : statePost._id})
+            .then(res => {
+                dispatchUser({type : 'USERDATA', data : res.data});
+                axios.get(`/dashboard/news-feed/${auth.code}`)
+                    .then(res => {
+                        dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
+                    })
+            })
+    }
+
+    const update = (value) => {
+        axios.post(`/dashboard/update-post/${auth.code}`,{
+            post_id : statePost._id,
+            tweet : value
+        }).then(res =>{
+                setPost(res.data)
+
+        })
+        
+
+
+    }
+    const edit = (e) => {
+        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.classList.add('pop');
+        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.focus();
+        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.disabled = false
+        
+        e.target.parentElement.classList.remove('dropdown-active')
+    }
+        
+    const notif = statePost.comments ? statePost.comments.map((comment, i) => (
+        <Comment index={i} setPost={setPost} key={i} post_id={statePost._id} comment_id={comment._id} comment={comment.comment} username={comment.username} postOwner={username}/>
+    )) : null;
+
+    const keyPress = (e) => {
+        if(e.which === 13){
+            update(e.target.value);
+            e.target.classList.remove('pop');
+            e.target.value = ''
+        }
+
+    }
     return (
         <div className='news-feed'>
             <div className='profile_logo'>
@@ -102,8 +147,8 @@ const NewsFeeds = (props) => {
                             <i onClick={dropdownToggle } className='fa fa-angle-down'></i>
                             <div className='dropdownOption'>
                                 
-                                <button>Delete</button>
-                                <button>Edit</button>
+                                <button onClick={deleting}>Delete</button>
+                                <button onClick={edit}>Edit</button>
                                 
 
                             </div>
@@ -111,21 +156,29 @@ const NewsFeeds = (props) => {
                     ) : null}
                     
                 </div>
-                <div className='tweet-content'>
-                    <p>{statePost.tweet}</p>
-                </div>
+                <p>{postContent}</p> 
+                <form onSubmit={update} className='tweet-content'>
+                    
+                    <textarea onKeyPress={keyPress} placeholder='type updated post' ></textarea>
+
+                </form>
+              
+                
+
+            
+                
                 <div className='icons'>
                     <ul>
                         <li>
-                            {statePost.Likes.some(like => like.username === userData.username) ? 
+                            {statePost.Likes ? statePost.Likes.some(like => like.username === userData.username) ? 
                                 <i onClick={like} className='fa fa-heart liked'></i>:
-                                <i onClick={like} className='fa fa-heart'></i>}
+                                <i onClick={like} className='fa fa-heart'></i> : null}
                             
-                            <p>{statePost.Likes.length}</p>
+                            <p>{statePost.Likes ? statePost.Likes.length : ''}</p>
                         </li>
                         <li>
                             <i onClick={comment} className='fa fa-comment'></i>
-                            <p>{statePost.comments.length}</p>
+                            <p>{statePost.comments ? statePost.comments.length : ''}</p>
                         </li>
                     </ul>
                 </div>
@@ -134,9 +187,7 @@ const NewsFeeds = (props) => {
                         <input onChange={setComment} value={commentInput} type='text' placeholder='write a comment...'/>
                     </form>
                     <div className='comment-container'>
-                    {statePost.comments.map((comment, i) => (
-                        <Comment key={i} id={comment._id} comment={comment.comment} username={comment.username} postOwner={statePost.username}/>
-                    ))}
+                    {notif}
 
                     </div>
 
