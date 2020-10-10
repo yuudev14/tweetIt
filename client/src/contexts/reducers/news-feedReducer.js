@@ -7,7 +7,7 @@ export const newsFeedReducer = (state, action) => {
                 _id : '',
                 comments : [],
                 Likes : []
-            }]
+            }];
         default:
             return state;
     }

@@ -10,9 +10,10 @@ const Notification = (props) => {
 
     const{dispatch_newsFeed} = useContext(NEWS_FEED);
 
-    const link = notification.post_id ? `post?username=${username}&post_id=${notification.post_id}` : notification.username;
+    const link = notification.post_id ? '' : notification.username;
     const go = () => {
-        axios.get(`/dashboard/${link}`)
+        if(link !== notification.username){
+            axios.get(`/dashboard/post?username=${username}&post_id=${notification.post_id}`)
             .then(res => {
                 console.log(res.data);
                 if(res.data !== false){
@@ -21,9 +22,11 @@ const Notification = (props) => {
                     // props.location.push(`/dashboard/${link}`)
                 }
             })
+        }
+        
     }
     return ( 
-        <Link onClick={go}>
+        <Link onClick={go} to={`/${link}`}>
             <div className='notification'>
                 
                 <div className='notification-type'>

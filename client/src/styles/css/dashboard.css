@@ -587,6 +587,79 @@
   flex-direction: column;
   align-items: center;
 }
+.dashboard .userHomeProfile-section .editUser {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.dashboard .userHomeProfile-section .editUser .editProfileOwner-background {
+  background-color: rgba(55, 55, 55, 0.5);
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+}
+.dashboard .userHomeProfile-section .editUser .editUserForm {
+  height: 500px;
+  width: 350px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 11;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dashboard .userHomeProfile-section .editUser .editUserForm i {
+  color: #1ed2f4;
+}
+.dashboard .userHomeProfile-section .editUser .editUserForm h1 {
+  font-family: "Open Sans", sans-serif;
+  color: #1ed2f4;
+  margin: 20px;
+  margin-right: auto;
+}
+.dashboard .userHomeProfile-section .editUser input {
+  width: 80%;
+  height: 1.4rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #1ed2f4;
+}
+.dashboard .userHomeProfile-section .editUser input[type=submit] {
+  background-color: #f79e02;
+  color: #f4f5f6;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 1em;
+  width: 50%;
+  height: 2em;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.dashboard .userHomeProfile-section .editUser input[type=submit]:hover {
+  transform: scale(1.2);
+}
+.dashboard .userHomeProfile-section .editUser .input-container {
+  border: 2px solid #1ed2f4;
+  background-color: transparent;
+  width: 80%;
+  margin: 10px;
+  border-radius: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+.dashboard .userHomeProfile-section .editUserActive {
+  display: block;
+}
 .dashboard .userHomeProfile-section .Userpicture {
   width: 100%;
 }

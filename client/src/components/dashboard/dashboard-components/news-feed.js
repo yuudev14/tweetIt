@@ -32,17 +32,14 @@ const NewsFeeds = (props) => {
             if(index === 0){
                 axios.get(`/dashboard/other-user/${props.match.params.id}`)
                     .then(res => {
-                        console.log(res.data)
                         setPost(res.data.posts[0]);
                     });
             }
-    
         }
     },[]);
 
     
     if(!props.match.params.id && newsFeed[index]){
-        console.log(newsFeed[index])
         if(statePost._id !== newsFeed[index]._id){
             setPost(newsFeed[index])
         }
@@ -118,8 +115,8 @@ const NewsFeeds = (props) => {
         
         e.target.parentElement.classList.remove('dropdown-active')
     }
-        
-    const notif = statePost.comments ? statePost.comments.map((comment, i) => (
+    console.log(statePost);
+    const notif = statePost.comments !== 'undefined' ? statePost.comments.map((comment, i) => (
         <Comment index={i} setPost={setPost} key={i} post_id={statePost._id} comment_id={comment._id} comment={comment.comment} username={comment.username} postOwner={username}/>
     )) : null;
 

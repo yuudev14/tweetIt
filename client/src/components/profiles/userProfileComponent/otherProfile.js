@@ -3,8 +3,10 @@ import user from '../../../assets/user.png';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import NewsFeeds from '../../dashboard/dashboard-components/news-feed';
+import { USERDATA } from '../../../contexts/userData';
 
 const OtherProfile = (props) => {
+    const {userData} = useContext(USERDATA);
     const username = props.match.params.id;
     const [userInfo, setUserInfo] = useState({
         posts : [{
@@ -18,9 +20,14 @@ const OtherProfile = (props) => {
             .then(res => {
                 setUserInfo(res.data);
             });
-
-
     },[]);
+    if(props.match.params.id !== userInfo.username){
+        console.log('hi');
+        axios.get(`/dashboard/other-user/${username}`)
+            .then(res => {
+                setUserInfo(res.data);
+            });
+    }
     useEffect(() => {
         console.log(userInfo);
     },[userInfo]);
@@ -38,10 +45,11 @@ const OtherProfile = (props) => {
                     <div className='prof-pic'>
                         <img src={user} />
                         <p>{userInfo.username}</p>
-
-
-
                     </div>
+                    {userData.friends !== undefined ? userData.friends.some(friend => friend.username === userInfo.username && friend.accepted === true) ?
+                          <button>Friends</button>  : userData.friends.some(friend => friend.username === userInfo.username && friend.accepted === false) ?
+                          <button>Cancel Request</button> : userData.friendRequest.some(friend => friend.username === userInfo.username) ?  <button>Accept Friend</button> : <button>Add Friend</button> : null}
+                    
 
                 </div>
                 

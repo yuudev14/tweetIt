@@ -13,6 +13,7 @@ const Profile = (props) => {
     const {dispatch_newsFeed} = useContext(NEWS_FEED);
     const [friendSuggestions, setFriendSuggestion] = useState([{username : '', _id : ''}]);
     useEffect(() => {
+        console.log('h')
         axios.get(`/dashboard/friends-suggestion/${auth.code}`)
             .then(res =>{
                 setFriendSuggestion(res.data);

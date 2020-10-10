@@ -13,12 +13,12 @@ const HomeNewsFeed = ({category}) => {
     const {newsFeed, dispatch_newsFeed} = useContext(NEWS_FEED);
     const {userData} = useContext(USERDATA);
     
-    useEffect(()=>{
-        axios.get(`/dashboard/news-feed/${auth.code}`)
-        .then(res => {
-            dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
-        });
-    },[]);
+    // useEffect(()=>{
+    //     axios.get(`/dashboard/news-feed/${auth.code}`)
+    //     .then(res => {
+    //         dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
+    //     });
+    // },[]);
     return (  
         <section className='newsFeed-section main-active'>
             <div className='new-Tweet'>
@@ -27,7 +27,7 @@ const HomeNewsFeed = ({category}) => {
             <div className='news-feed-container'>
                 {category==='user' ? userData.posts.map((post, i)=> (
                     <NewsFeeds key={i} post={post} index = {i} username={userData.username}/>
-                )) : newsFeed? newsFeed.map((post,i) => <NewsFeeds key={i} index = {i} post={post} username={post.username}/>) : null}
+                )) : newsFeed !== 'news-feed'? newsFeed.map((post,i) => <NewsFeeds key={i} index = {i} post={post} username={post.username}/>) : null}
 
                 
             </div>

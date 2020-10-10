@@ -23,6 +23,8 @@ route.post('/delete-post/:id', dashboard.deletePost);
 route.post('/update-post/:id', dashboard.updatePost);
 route.post('/delete-comment/:id', dashboard.deleteComment);
 route.post('/update-comment/:id', dashboard.updateComment);
+route.post('/editProfile/:id', dashboard.editProfile);
+
 
 
 module.exports = route;
