@@ -15,11 +15,14 @@ const FriendSuggestion = ({friend, setFriendSuggestion}) => {
             user_id : auth.code
         })
             .then(res => {
-                dispatchUser({type: 'USERDATA', data : res.data});
-                axios.get(`/dashboard/friends-suggestion/${auth.code}`)
-                    .then(res =>{
-                        setFriendSuggestion(res.data);
-                    });  
+                if(res.data !== 'already a friend'){
+                    dispatchUser({type: 'USERDATA', data : res.data});
+                    axios.get(`/dashboard/friends-suggestion/${auth.code}`)
+                        .then(res =>{
+                            setFriendSuggestion(res.data);
+                        });  
+                };
+                
             });
     };
     return (

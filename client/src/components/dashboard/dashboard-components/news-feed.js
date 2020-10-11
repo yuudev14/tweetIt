@@ -36,6 +36,7 @@ const NewsFeeds = (props) => {
                     });
             }
         }
+        // setPost(newsFeed[index])
     },[]);
 
     

@@ -20,7 +20,7 @@ const otherUserInfo = (req, res) => {
         .then(user => {
             res.send(user);
         })
-        .catch(err => console.log(err))
+        .catch(err => res.send('no user'));
 }
 
 const news_feed = (req, res) => {
@@ -118,25 +118,31 @@ const acceptFriend = (req, res) => {
     
     User.findOne({_id : req.params.id})
         .then(user => {
-            User.findOne({_id})
-                .then(acceptedFriend=>{
-                    acceptedFriend.friends = acceptedFriend.friends.map(friend => {
-                        if(friend._id === req.params.id){
-                            friend.accepted = true
-                        }
-                        return friend
-                    });
-                    acceptedFriend.notifications.unshift({about : 'accepted your friend request', username: user.username});
-                    acceptedFriend.save()
+            // if(user.friendRequest.some(friend => friend.username === username)){
+            //     res.send('already a friend')
+            // }else{
+                User.findOne({_id})
+                    .then(acceptedFriend=>{
+                        acceptedFriend.friends = acceptedFriend.friends.map(friend => {
+                            if(friend._id === req.params.id){
+                                friend.accepted = true
+                            }
+                            return friend
+                        });
+                        acceptedFriend.notifications.unshift({about : 'accepted your friend request', username: user.username});
+                        acceptedFriend.save()
 
-                })
-                .catch(err => console.log(err));
-            user.friends.unshift({username, _id, accepted : true});
+                    })
+                    .catch(err => console.log(err));
+                user.friends.unshift({username, _id, accepted : true});
+                
+                user.friendRequest = user.friendRequest.filter(friendRequest => friendRequest._id !== _id);
+                user.save()
+                    .then(user => {res.send(user)})
+                    .catch(err => console.log(err));
+
+            // }
             
-            user.friendRequest = user.friendRequest.filter(friendRequest => friendRequest._id !== _id);
-            user.save()
-                .then(user => {res.send(user)})
-                .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
 
@@ -157,6 +163,41 @@ const rejectFriend = (req, res) => {
                 .then(user => {res.send(user)})
                 .catch(err => console.log(err));
         });
+}
+
+const cancelRequest = (req, res) => {
+    const {username} = req.body;
+    console.log(req.body);
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({username})
+                .then(otherUser => {
+                    otherUser.friendRequest = otherUser.friendRequest.filter(request => request.username !== user.username);
+                    otherUser.save()
+                });
+            user.friends = user.friends.filter(friends => friends.username !== username);
+            user.save()
+                .then(user => res.send(user))
+                .catch(err => console.log(err));
+        })
+
+}
+
+const unFriend = (req, res) => {
+    const {username} = req.body;
+    console.log(req.body);
+    User.findOne({_id : req.params.id})
+        .then(user => {
+            User.findOne({username})
+                .then(otherUser => {
+                    otherUser.friends = otherUser.friends.filter(request => request.username !== user.username);
+                    otherUser.save()
+                });
+            user.friends = user.friends.filter(friends => friends.username !== username);
+            user.save()
+                .then(user => res.send(user))
+                .catch(err => console.log(err));
+        })
 }
 
 const likePost = (req, res) => {
@@ -373,15 +414,61 @@ const editProfile = (req, res) => {
                         
                         
                         if(Object.values(error).every(res => res === '')){
+                            User.find({_id : {$ne : req.params.id}})
+                                .then(all => {
+                                    all.forEach(all => {
+                                        all.friends = all.friends.map(friend => {
+                                            if(friend.username === current.username){
+                                                friend.username = username;
+                                                console.log(username)
+                                                console.log(friend.username)
+                                            }
+                                            return friend;
+                                        });
+                                        all.posts = all.posts.map(post => {
+                                            post.comments = post.comments.map(comment => {
+                                                if(comment.username === current.username){
+                                                    comment.username = username;
+                                                };
+                                                return comment;
+
+                                            })
+                                            return post;
+
+                                            
+                                        });
+                                        all.friendRequest = all.friendRequest.map(req => {
+                                            if(req.username === current.username){
+                                                req.username = username;
+                                            };
+                                            return req;
+                                        });
+                                        all.notifications = all.notifications.map(not => {
+                                            if(not.username === current.username){
+                                                not.username = username;
+                                            };
+                                            return not;
+                                        })
+                                        
+                                        all.save();
+                                        
+                                    });
+                            
+                                    
+                                })
+                                .catch(err => console.log(err))
                             bcrypt.genSalt(10, (err, salt)=>{
                                 if(err) throw err;
                                 bcrypt.hash(password, salt, (err, hash) => {
-                                    if(err) throw err;
+                                    if(err) throw err; 
                                     current.username = username;
                                     current.password = hash;
                                     current.email = email;
                                     current.save()
-                                        .then(user => res.send(user));
+                                        .then(user => {
+                                            
+                                            res.send(user)
+                                        });
                                 })
                             })
                         }else{
@@ -416,4 +503,6 @@ module.exports = {
     search,
     postFeed,
     editProfile,
+    cancelRequest,
+    unFriend
 }

@@ -12,6 +12,7 @@ const FriendRequest = ({friendRequest}) => {
             username : friendRequest.username, 
             _id : friendRequest._id
         }).then(res => {
+            console.log(res.data);
             axios.get(`/dashboard/user/${auth.code}`)
                 .then(res => {
                     dispatchUser({type : 'USERDATA', data : res.data});

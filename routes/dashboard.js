@@ -16,6 +16,8 @@ route.get('/friends-suggestion/:id', dashboard.friendSuggestion);
 route.post('/add-friend/', dashboard.addFriend);
 route.post('/acceptFriend/:id', dashboard.acceptFriend);
 route.post(`/reject/:id`, dashboard.rejectFriend);
+route.post(`/cancel-request/:id`, dashboard.cancelRequest);
+route.post('/unFriend/:id', dashboard.unFriend);
 route.post('/like/:id', dashboard.likePost);
 route.post(`/add-comment/:id`, dashboard.addCommentPost);
 route.get('/notifications/:id', dashboard.getNotification);
