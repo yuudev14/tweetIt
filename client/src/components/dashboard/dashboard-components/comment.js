@@ -9,9 +9,6 @@ const Comment = ({comment, username, post_id, comment_id, postOwner,setPost}) =>
     const {auth} = useContext(IsLogin);
     const [commentValue, setComment] = useState(comment);
 
-    
-
-
     const dropdownToggle = (e) => {
         document.querySelectorAll('.comment .dropdownOption').forEach(d => d === e.target.nextSibling ?
              d.classList.toggle('dropdown-active') : d.classList.remove('dropdown-active'))

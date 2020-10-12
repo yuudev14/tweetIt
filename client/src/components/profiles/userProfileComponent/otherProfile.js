@@ -5,9 +5,11 @@ import axios from 'axios';
 import NewsFeeds from '../../dashboard/dashboard-components/news-feed';
 import { USERDATA } from '../../../contexts/userData';
 import { IsLogin } from '../../../contexts/isLogin';
+import { FRIEND_SUGGESTION } from '../../../contexts/friendSuggestion-context';
 
 const OtherProfile = (props) => {
     const {userData, dispatchUser} = useContext(USERDATA);
+    const {dispatch_suggestion} = useContext(FRIEND_SUGGESTION);
     const {auth} = useContext(IsLogin);
     const username = props.match.params.id;
     const [userInfo, setUserInfo] = useState({
@@ -30,22 +32,20 @@ const OtherProfile = (props) => {
             });
     },[]);
     if(props.match.params.id !== userInfo.username){
-        console.log('hi');
+       
         axios.get(`/dashboard/other-user/${username}`)
             .then(res => {
                 setUserInfo(res.data);
             });
     }
-    useEffect(() => {
-        console.log(userInfo);
-    },[userInfo]);
+
 
     const acceptFriend = () => {
         axios.post(`dashboard/acceptFriend/${auth.code}`, {
             username : userInfo.username, 
             _id : userInfo._id
         }).then(res => {
-            console.log(res.data);
+
             axios.get(`/dashboard/user/${auth.code}`)
                 .then(res => {
                     dispatchUser({type : 'USERDATA', data : res.data});
@@ -69,6 +69,10 @@ const OtherProfile = (props) => {
             .then(res => {
                 if(res.data !== 'already a friend'){
                     dispatchUser({type: 'USERDATA', data : res.data});
+                    axios.get(`/dashboard/friends-suggestion/${auth.code}`)
+                        .then(res =>{
+                            dispatch_suggestion({type :'SUGGESTION', data : res.data});
+                        });
                 };
             });
     };
@@ -100,10 +104,6 @@ const OtherProfile = (props) => {
                 </div>
                 
 
-            </div>
-            <div className='friend-total-container'>
-                <h3>Friends</h3>
-                <button>See All</button>
             </div>
             
 

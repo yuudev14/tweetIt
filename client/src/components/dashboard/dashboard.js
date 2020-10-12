@@ -10,8 +10,10 @@ import Profile from './dashboard-components/profile';
 import axios from 'axios';
 import { USERDATA } from '../../contexts/userData';
 import { NEWS_FEED } from '../../contexts/news-feed-context';
+import { FRIEND_SUGGESTION } from '../../contexts/friendSuggestion-context';
 
 const Dashboard = (props) => {
+    const {dispatch_suggestion} = useContext(FRIEND_SUGGESTION);
     const {auth} = useContext(IsLogin);
     const {userData, dispatchUser} = useContext(USERDATA);
     const {dispatch_newsFeed} = useContext(NEWS_FEED);
@@ -75,6 +77,16 @@ const Dashboard = (props) => {
             .then(res => {
                 dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
             });
+        axios.get(`/dashboard/friends-suggestion/${auth.code}`)
+            .then(res =>{
+               
+                dispatch_suggestion({type :'SUGGESTION', data : res.data});
+            });
+        axios.get(`/dashboard/notifications/${auth.code}`)
+            .then(res => {
+            
+                setNotification(res.data);
+            })
     }
 
     return ( 

@@ -3,10 +3,14 @@ import user from '../../../assets/user.png';
 import axios from 'axios';
 import { IsLogin } from '../../../contexts/isLogin';
 import { USERDATA } from '../../../contexts/userData';
+import { FRIEND_SUGGESTION } from '../../../contexts/friendSuggestion-context';
+import {Link} from 'react-router-dom';
 
-const FriendSuggestion = ({friend, setFriendSuggestion}) => {
+const FriendSuggestion = ({friend}) => {
     const {auth} = useContext(IsLogin);
+    const {suggestionList, dispatch_suggestion} = useContext(FRIEND_SUGGESTION);
     const {dispatchUser} = useContext(USERDATA);
+    console.log(friend)
 
     const addFriend = () => {
         axios.post('/dashboard/add-friend',{
@@ -19,7 +23,7 @@ const FriendSuggestion = ({friend, setFriendSuggestion}) => {
                     dispatchUser({type: 'USERDATA', data : res.data});
                     axios.get(`/dashboard/friends-suggestion/${auth.code}`)
                         .then(res =>{
-                            setFriendSuggestion(res.data);
+                            dispatch_suggestion({type :'SUGESSTION', data : res.data});
                         });  
                 };
                 
@@ -29,7 +33,7 @@ const FriendSuggestion = ({friend, setFriendSuggestion}) => {
         <div className='suggestion' key={friend._id}>
             <div className='suggestion_user_profile'>
                 <img className='friend_sugg_prof' src={user}/>
-                <p>{friend.username}</p>
+                <Link to={`/${friend.username}`}><p>{friend.username}</p></Link>
             </div>
             <button onClick={addFriend} className='send_request'>Add Friend</button>
         </div>

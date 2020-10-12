@@ -81,6 +81,9 @@
         
         .friend_request{
             padding-bottom: 70px;
+            a{
+                color: $secondary;
+            }
             .friend_request_content{
                 display: flex;
                 justify-content: space-between;

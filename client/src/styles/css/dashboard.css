@@ -91,6 +91,9 @@
   padding: 10px;
   border-radius: 13px;
 }
+.dashboard main .profile_suggestion-section a {
+  color: #0074e1;
+}
 .dashboard main .profile_suggestion-section .profile {
   display: flex;
   flex-direction: column;
@@ -99,6 +102,9 @@
 }
 .dashboard main .profile_suggestion-section .profile img {
   width: 100px;
+}
+.dashboard main .profile_suggestion-section .profile a {
+  color: #0074e1;
 }
 .dashboard main .profile_suggestion-section .profile p {
   text-align: center;
@@ -229,6 +235,9 @@
 }
 .dashboard main .notification-section .friend_request {
   padding-bottom: 70px;
+}
+.dashboard main .notification-section .friend_request a {
+  color: #0074e1;
 }
 .dashboard main .notification-section .friend_request .friend_request_content {
   display: flex;
@@ -378,8 +387,9 @@
   margin-bottom: 10px;
   position: relative;
 }
-.dashboard main .news-feed-container .feed-user-info .date {
-  margin-left: auto;
+.dashboard main .news-feed-container .feed-user-info #Postdate {
+  margin-right: 10%;
+  font-family: "Open Sans", sans-serif;
 }
 .dashboard main .news-feed-container .feed-user-info .dropdownOption {
   height: 0;
@@ -829,8 +839,9 @@
   margin-bottom: 10px;
   position: relative;
 }
-.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .date {
-  margin-left: auto;
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info #Postdate {
+  margin-right: 10%;
+  font-family: "Open Sans", sans-serif;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info .dropdownOption {
   height: 0;

@@ -80,6 +80,7 @@
             height: max-content;
         
         }
+        
 
         .profile_logo{
             width: 10%;
@@ -122,8 +123,10 @@
             justify-content: space-between;
             margin-bottom: 10px;
             position: relative;
-            .date{
-                margin-left: auto;
+            #Postdate{
+                margin-right: 10%;
+                font-family: $secondaryFont, sans-serif;
+                
             }
             .dropdownOption{
                 // height: 100px;

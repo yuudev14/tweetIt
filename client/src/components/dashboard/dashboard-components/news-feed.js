@@ -116,7 +116,6 @@ const NewsFeeds = (props) => {
         
         e.target.parentElement.classList.remove('dropdown-active')
     }
-    console.log(statePost);
     const notif = statePost.comments !== 'undefined' ? statePost.comments.map((comment, i) => (
         <Comment index={i} setPost={setPost} key={i} post_id={statePost._id} comment_id={comment._id} comment={comment.comment} username={comment.username} postOwner={username}/>
     )) : null;
@@ -129,6 +128,10 @@ const NewsFeeds = (props) => {
         }
 
     }
+
+    const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    const date = new Date(statePost.date)
+    const dateText = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${date.getHours()}: ${date.getMinutes()}`;
     return (
         <div className='news-feed'>
             <div className='profile_logo'>
@@ -139,7 +142,7 @@ const NewsFeeds = (props) => {
             <div className='feed-content'>
                 <div className='feed-user-info'>
                     <Link to={`/${link}`}><p className='feed-username'>{username}</p></Link>
-                    <p className='date'>10/06/20</p>
+                    <p id='Postdate'>{dateText}</p>
                     {userData.username === username ? (
                         <>
                             <i onClick={dropdownToggle } className='fa fa-angle-down'></i>

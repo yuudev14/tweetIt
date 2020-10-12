@@ -95,17 +95,24 @@ const addFriend = (req, res) => {
 
     User.findOne({_id : user_id})
         .then(user => {
-            User.findOne({_id})
-            .then(addedUser => {
-                addedUser.friendRequest.unshift({_id: user._id, username : user.username});
-                
-                addedUser.save()
-                .catch(err => console.log(err));
-            });
-            user.friends.push({_id, username});
-            user.save()
-                .then(user=> res.send(user))
-                .catch(err => console.log(err));
+            const inFriendReq = user.friendRequest.some(friend => friend.username === username);
+            const inFriends = user.friends.some(friend => friend.username === username);
+            if(!inFriendReq && !inFriends){
+                User.findOne({_id})
+                    .then(addedUser => {
+                        addedUser.friendRequest.unshift({_id: user._id, username : user.username});
+                        
+                        addedUser.save()
+                        .catch(err => console.log(err));
+                    });
+                user.friends.push({_id, username});
+                user.save()
+                    .then(user=> res.send(user))
+                    .catch(err => console.log(err));
+            }else{
+                res.send(user);
+            }
+            
         })
         .catch(err => console.log(err));
 

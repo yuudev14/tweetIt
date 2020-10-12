@@ -15,10 +15,10 @@ const Notification = (props) => {
         if(link !== notification.username){
             axios.get(`/dashboard/post?username=${username}&post_id=${notification.post_id}`)
             .then(res => {
-                console.log(res.data);
+               
                 if(res.data !== false){
                     dispatch_newsFeed({type : 'NEWSFEED', data : res.data})
-                    console.log(res.data);
+                   
                     // props.location.push(`/dashboard/${link}`)
                 }
             })
