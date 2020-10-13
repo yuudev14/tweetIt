@@ -12,21 +12,12 @@ const NewsFeeds = (props) => {
     const {post, username,index} = props;
     
     const {newsFeed, dispatch_newsFeed} = useContext(NEWS_FEED);
-    const [statePost, setPost] = useState({
-        _id : '',
-        Likes : [],
-        comments : [],
-
-
-    });
+    const [statePost, setPost] = useState(post);
 
     const [profilePic, setProfilePic] = useState();
 
     useEffect(() => {
-        axios.get(`/dashboard/other-user/${username}`)
-            .then(res => {
-                setProfilePic(res.data.profilePic);
-            });
+        
     }, []);
     const [commentInput, setCommentInput] = useState('');
     const [postContent, setPostContent] = useState('')
@@ -38,7 +29,10 @@ const NewsFeeds = (props) => {
         setPostContent(statePost.tweet);
     },[statePost])
     useEffect(() => {
-        setPost(post);
+        axios.get(`/dashboard/other-user/${username}`)
+            .then(res => {
+                setProfilePic(res.data.profilePic);
+            });
         if(props.match.params.id){
             if(index === 0){
                 axios.get(`/dashboard/other-user/${props.match.params.id}`)
@@ -55,6 +49,10 @@ const NewsFeeds = (props) => {
     if(!props.match.params.id && newsFeed[index]){
         if(statePost._id !== newsFeed[index]._id){
             setPost(newsFeed[index])
+            axios.get(`/dashboard/other-user/${newsFeed[index].username}`)
+                    .then(res => {
+                        setProfilePic(res.data.profilePic);
+                    });
         }
     }
 

@@ -17,7 +17,7 @@ const Notification = (props) => {
     const link = notification.post_id ? '' : notification.username;
 
     useEffect(() => {
-        axios.get(`/dashboard/other-user/${username}`)
+        axios.get(`/dashboard/other-user/${notification.username}`)
             .then(res => {
                 setProfilePic(res.data.profilePic);
             })
