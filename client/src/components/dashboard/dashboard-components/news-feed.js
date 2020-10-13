@@ -6,6 +6,7 @@ import { USERDATA } from '../../../contexts/userData';
 import Comment from './comment';
 import {Link, withRouter} from 'react-router-dom';
 import { NEWS_FEED } from '../../../contexts/news-feed-context';
+import profile from './profile';
 
 const NewsFeeds = (props) => {
     const {post, username,index} = props;
@@ -16,7 +17,17 @@ const NewsFeeds = (props) => {
         Likes : [],
         comments : [],
 
+
     });
+
+    const [profilePic, setProfilePic] = useState();
+
+    useEffect(() => {
+        axios.get(`/dashboard/other-user/${username}`)
+            .then(res => {
+                setProfilePic(res.data.profilePic);
+            });
+    }, []);
     const [commentInput, setCommentInput] = useState('');
     const [postContent, setPostContent] = useState('')
 
@@ -33,10 +44,18 @@ const NewsFeeds = (props) => {
                 axios.get(`/dashboard/other-user/${props.match.params.id}`)
                     .then(res => {
                         setPost(res.data.posts[0]);
+                        console.log(res.data.profilePic);
+                        setProfilePic(res.data.profilePic);
                     });
             }
+        }else{
+            if(profilePic === undefined){
+                axios.get(`/dashboard/other-user/${username}`)
+                .then(res => {
+                    document.querySelector('.weirdPic').src = res.data.profilePic
+                });
+            }
         }
-        // setPost(newsFeed[index])
     },[]);
 
     
@@ -136,7 +155,7 @@ const NewsFeeds = (props) => {
         <div className='news-feed'>
             <div className='profile_logo'>
                 <div className='logo'>
-                    <img src={user} />
+                    <img className='weirdPic' src={profilePic === '' || profilePic === undefined ? user : profilePic} />
                 </div>
             </div>
             <div className='feed-content'>

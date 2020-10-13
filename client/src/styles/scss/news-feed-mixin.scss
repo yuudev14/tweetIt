@@ -99,7 +99,13 @@
         .profile_logo{
             width: 10%;
             img{
-                width: 70%;
+                width: 5vw;
+                max-width: 40px;
+                max-height: 40px;
+                min-width: 30px;
+                min-height: 30px;
+                height: 5vw;
+                border-radius: 40px;
             }
         }
         .feed-content{
@@ -141,6 +147,9 @@
             margin-bottom: 10px;
             position: relative;
             width: 100%;
+            p{
+                margin-left: 10px;
+            }
             .date{
                 margin-left: auto;
                 display: flex;

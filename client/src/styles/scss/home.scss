@@ -3,30 +3,11 @@
 .Home{
     display: flex;
     flex-direction: column;
-    height: 100vh;
     header, .authenticate, .about1-container{
         background-color: $primary;
     }
-    footer{
-        margin-top: auto;
-        width: 100%;
-        background-color: $primary;
-        min-height: 100px;
-    }
-    
-    header{
-        position: fixed;
-        top: 0;
-        width: 100%;
-        max-width: 1500px;
-        z-index: 10;
-    }
-    .authenticate{
-        margin-top: 50px;
-    }
     @include Nav;
     @include Authenticate;
-    @include About1;
 }
 @media only screen and(min-width: 600px){
     @include Tablet;

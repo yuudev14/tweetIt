@@ -214,7 +214,9 @@
   width: 80%;
 }
 .dashboard main .notification-section .notification-container .notification-content img {
-  width: 15%;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
 }
 .dashboard main .notification-section .notification-container .notification-content p {
   font-family: "Open Sans", sans-serif;
@@ -371,7 +373,13 @@
   width: 10%;
 }
 .dashboard main .news-feed-container .profile_logo img {
-  width: 70%;
+  width: 5vw;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 30px;
+  min-height: 30px;
+  height: 5vw;
+  border-radius: 40px;
 }
 .dashboard main .news-feed-container .feed-content {
   width: 90%;
@@ -405,6 +413,9 @@
   margin-bottom: 10px;
   position: relative;
   width: 100%;
+}
+.dashboard main .news-feed-container .feed-user-info p {
+  margin-left: 10px;
 }
 .dashboard main .news-feed-container .feed-user-info .date {
   margin-left: auto;
@@ -601,7 +612,7 @@
 }
 .dashboard .newTweetIcon {
   position: fixed;
-  background-color: #1ed2f4;
+  background-color: #f79e02;
   z-index: 11;
   color: white;
   height: 50px;
@@ -610,7 +621,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 9px #0074e1;
+  box-shadow: 2px 3px 9px #f79e02;
   bottom: 70px;
   right: 30px;
   cursor: pointer;
@@ -878,7 +889,13 @@
   width: 10%;
 }
 .dashboard .userHomeProfile-section .news-feed-container .profile_logo img {
-  width: 70%;
+  width: 5vw;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 30px;
+  min-height: 30px;
+  height: 5vw;
+  border-radius: 40px;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-content {
   width: 90%;
@@ -912,6 +929,9 @@
   margin-bottom: 10px;
   position: relative;
   width: 100%;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info p {
+  margin-left: 10px;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info .date {
   margin-left: auto;

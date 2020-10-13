@@ -54,24 +54,40 @@
 @mixin Authenticate {
     .authenticate{
         width: 100%;
-        height: 600px;
+        height: 90vh;
         background-color: $primary;
         display: flex;
-        align-items: center;
         position: relative;
         .authenticate-container{
             margin: auto;
             width: 60%;
-            height: 80%;
+            height: 500px;
             display: flex;
         }
         .logo-icon{
             width: 50%;
             height: 100%;
             display: none;
+            margin-top: 70px;
             h1{
-                color: $secondary;
+                color: white;
                 font-family: $primaryFont, sans-serif;
+                display: inline;
+            }
+            .type-cursor{
+                border-right: 5px solid white;
+                font-size: 2em;
+                margin-left: 10px;
+                animation-name: blink;
+                animation-duration: 0.5s;
+                animation-iteration-count: infinite;
+                opacity: 0;
+            }
+            @keyframes blink { 
+                to{
+                    opacity: 1;
+                }
+                
             }
         }
         .login_or_sign-up{
@@ -172,51 +188,7 @@
     
 }
 
-@mixin About1 {
-    .about1-container{
-        height: max-content;
-        min-height: 300px;
-        
-        width: 100%;
-        background-color: $primary;
-        display: flex;
-        div{
-            width: 60%;
-            margin:0 auto;
-            min-width: 230px;
-            // height: 300px;
-            // max-height: 500px;
-        }
-        h1{
-            text-align: center;
-            font-family: $primaryFont, sans-serif;
-            color: $quarternary;
-            font-size: 3em;
-            display: inline;
-        }
-        h3{
-            font-family: $secondaryFont, sans-serif;
-            color: $quarternary;
-            font-size: 1em;
-        }
-        .type-cursor{
-            border-right: 5px solid $quarternary;
-            font-size: 3em;
-            margin-left: 10px;
-            animation-name: blink;
-            animation-duration: 0.5s;
-            animation-iteration-count: infinite;
-            opacity: 0;
-        }
-        @keyframes blink {
-            
-            to{
-                opacity: 1;
-            }
-            
-        }
-    }
-}
+
 
 @mixin Tablet{
     .nav-home{
@@ -243,15 +215,8 @@
         justify-content: space-between !important;
         .logo-icon{
             color: $quarternary;
-            display: flex !important;
-            flex-direction: column;
-            align-items: center;
-            img{
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            
+            display: block !important;
+            padding-right: 10px;
         }
         .login-sign-up-authenticate{
             width: 50% !important;

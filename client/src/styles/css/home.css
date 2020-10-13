@@ -1,26 +1,9 @@
 .Home {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 .Home header, .Home .authenticate, .Home .about1-container {
   background-color: #1ed2f4;
-}
-.Home footer {
-  margin-top: auto;
-  width: 100%;
-  background-color: #1ed2f4;
-  min-height: 100px;
-}
-.Home header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  max-width: 1500px;
-  z-index: 10;
-}
-.Home .authenticate {
-  margin-top: 50px;
 }
 .Home .nav-home {
   margin: auto;
@@ -71,26 +54,41 @@
 }
 .Home .authenticate {
   width: 100%;
-  height: 600px;
+  height: 90vh;
   background-color: #1ed2f4;
   display: flex;
-  align-items: center;
   position: relative;
 }
 .Home .authenticate .authenticate-container {
   margin: auto;
   width: 60%;
-  height: 80%;
+  height: 500px;
   display: flex;
 }
 .Home .authenticate .logo-icon {
   width: 50%;
   height: 100%;
   display: none;
+  margin-top: 70px;
 }
 .Home .authenticate .logo-icon h1 {
-  color: #0074e1;
+  color: white;
   font-family: "Montserrat Alternates", sans-serif;
+  display: inline;
+}
+.Home .authenticate .logo-icon .type-cursor {
+  border-right: 5px solid white;
+  font-size: 2em;
+  margin-left: 10px;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
 }
 .Home .authenticate .login_or_sign-up {
   float: right;
@@ -182,45 +180,6 @@
   justify-content: space-evenly;
   padding: 5px;
 }
-.Home .about1-container {
-  height: -webkit-max-content;
-  height: max-content;
-  min-height: 300px;
-  width: 100%;
-  background-color: #1ed2f4;
-  display: flex;
-}
-.Home .about1-container div {
-  width: 60%;
-  margin: 0 auto;
-  min-width: 230px;
-}
-.Home .about1-container h1 {
-  text-align: center;
-  font-family: "Montserrat Alternates", sans-serif;
-  color: #f4f5f6;
-  font-size: 3em;
-  display: inline;
-}
-.Home .about1-container h3 {
-  font-family: "Open Sans", sans-serif;
-  color: #f4f5f6;
-  font-size: 1em;
-}
-.Home .about1-container .type-cursor {
-  border-right: 5px solid #f4f5f6;
-  font-size: 3em;
-  margin-left: 10px;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  opacity: 0;
-}
-@keyframes blink {
-  to {
-    opacity: 1;
-  }
-}
 
 @media only screen and (min-width: 600px) {
   .nav-home .logo i {
@@ -246,13 +205,8 @@
   }
   .authenticate .logo-icon {
     color: #f4f5f6;
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-  }
-  .authenticate .logo-icon img {
-    width: 100%;
-    max-width: 400px;
+    display: block !important;
+    padding-right: 10px;
   }
   .authenticate .login-sign-up-authenticate {
     width: 50% !important;

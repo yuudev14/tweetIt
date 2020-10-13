@@ -35,10 +35,23 @@ const Home = (props) => {
     
 
     useEffect(()=>{
-        console.log(registerErr);
+        if(!isTyping){
+            console.log('hi');
+            isTyping=true;
+            setTimeout(()=>{
+                const interval = setInterval(() => {
+                    original += copy[i];
+                    i++
+                    document.querySelector('.slogan').textContent = original
+                    if(original === copy){
+                        clearInterval(interval);
+                    }
+                }, speed);
+            }, 100)   
+        }
         
 
-    }, [registerErr]);
+    }, []);
 
     //show navigation in mobile
     const activateNav = () => {
@@ -47,31 +60,18 @@ const Home = (props) => {
     // parameters for the typing animation
     let isTyping = false;
     let original = '';
-    let copy = 'Let the world hear what you want to say!';
+    let copy = 'Share your thoughts now! Let the world hear what you want to say!';
     let i = 0;
-    let speed = 100;
+    let speed = 50;
 
     //an animation event so when the slogan is in window it will animate
-    document.addEventListener('scroll', () => {
-        const box = document.querySelector('.about1-container');
-        if(isInViewport(box)){
-            if(!isTyping){
-                    console.log('hi');
-                    isTyping=true;
-                    setTimeout(()=>{
-                        const interval = setInterval(() => {
-                            original += copy[i];
-                            i++
-                            document.querySelector('.slogan').textContent = original
-                            if(original === copy){
-                                clearInterval(interval);
-                            }
-                            speed = 100
-                        }, speed);
-                    }, 500)   
-            }
-        }
-    });
+    // document.addEventListener('scroll', () => {
+    //     const box = document.querySelector('.about1-container');
+    //     if(isInViewport(box)){
+            
+    //     }
+    // });
+    
 
     const register = (e) => {
         e.preventDefault();
@@ -144,8 +144,8 @@ const Home = (props) => {
                 <div className='authenticate'>
                     <div className='authenticate-container'>
                         <div className='logo-icon'>
-                            <img src={logo}/>
-                            <h1>Share your thoughts now!</h1>
+                            <h1 className='slogan'></h1>
+                            <span className='type-cursor'></span>
                         </div>
                         <div className='login-sign-up-authenticate'>
                             <div className='login_or_sign-up'>
@@ -154,37 +154,14 @@ const Home = (props) => {
 
                             </div>
                             {form === 'sign-up' ? <SignUp registerErr={registerErr} registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginErr={loginErr} loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
-                            
-                            
-
                         </div>
                        
                        
 
                     </div>
                 </div>
-                <div className='about1-container'>
-                    <div>
-                        <h3>tweet it wants to...</h3>
-                        <h1 className='slogan'></h1>
-                        <span className='type-cursor'></span>
-                    </div>
-                    
-
-                </div>
-                <div className='about2-container'>
-
-                </div>
-                <div className='about3-container'>
-
-                </div>
-
+                
             </main>
-            
-            <footer>
-            
-
-            </footer>
         </div>
      );
 }
