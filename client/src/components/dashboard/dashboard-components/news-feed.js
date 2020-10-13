@@ -48,13 +48,6 @@ const NewsFeeds = (props) => {
                         setProfilePic(res.data.profilePic);
                     });
             }
-        }else{
-            if(profilePic === undefined){
-                axios.get(`/dashboard/other-user/${username}`)
-                .then(res => {
-                    document.querySelector('.weirdPic').src = res.data.profilePic
-                });
-            }
         }
     },[]);
 
