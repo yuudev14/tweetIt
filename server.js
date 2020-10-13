@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise;
 
 
 
-mongoose.connect(mongodb,  { useUnifiedTopology: true, useNewUrlParser: true  })
+mongoose.connect(process.env.MONGODB_URI || mongodb,  { useUnifiedTopology: true, useNewUrlParser: true  })
     .then(()=> console.log('connected to database'))
     .catch((err)=> console.log(err));
 const PORT = process.env.PORT || 4000;
@@ -27,5 +27,9 @@ app.use(passport.session());
 
 app.use('/authentication', require('./routes/authentication'));
 app.use('/dashboard', require('./routes/dashboard'));
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+}
 
 app.listen(PORT, () => console.log(`connected to posrt ${PORT}`))

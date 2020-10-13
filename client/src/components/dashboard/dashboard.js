@@ -32,8 +32,7 @@ const Dashboard = (props) => {
                 axios.get(`/dashboard/notifications/${auth.code}`)
                     .then(res => {
                         setNotification(res.data);
-                    })
-                
+                    });
             });
         
     },[])
