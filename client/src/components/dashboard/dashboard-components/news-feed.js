@@ -110,9 +110,9 @@ const NewsFeeds = (props) => {
 
     }
     const edit = (e) => {
-        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.classList.add('pop');
-        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.focus();
-        e.target.parentElement.parentElement.nextSibling.nextSibling.firstChild.disabled = false
+        e.target.parentElement.parentElement.parentElement.nextSibling.nextSibling.firstChild.classList.add('pop');
+        e.target.parentElement.parentElement.parentElement.nextSibling.nextSibling.firstChild.focus();
+        e.target.parentElement.parentElement.parentElement.nextSibling.nextSibling.firstChild.disabled = false
         
         e.target.parentElement.classList.remove('dropdown-active')
     }
@@ -142,27 +142,34 @@ const NewsFeeds = (props) => {
             <div className='feed-content'>
                 <div className='feed-user-info'>
                     <Link to={`/${link}`}><p className='feed-username'>{username}</p></Link>
-                    <p id='Postdate'>{dateText}</p>
-                    {userData.username === username ? (
-                        <>
-                            <i onClick={dropdownToggle } className='fa fa-angle-down'></i>
-                            <div className='dropdownOption'>
-                                
-                                <button onClick={deleting}>Delete</button>
-                                <button onClick={edit}>Edit</button>
-                                
+                    
+                    <div className='date'>
+                        <p id='Postdate'>{dateText}</p>
+                        {userData.username === username ? (
+                            <>
+                                <i onClick={dropdownToggle } className='fa fa-angle-down'></i>
+                                <div className='dropdownOption'>
+                                    
+                                    <button onClick={deleting}>Delete</button>
+                                    <button onClick={edit}>Edit</button>
+                                    
 
-                            </div>
-                        </>
-                    ) : null}
+                                </div>
+                            </>
+                        ) : null}
+
+                    </div>
+                    
                     
                 </div>
                 <p>{postContent}</p> 
+                
                 <form onSubmit={update} className='tweet-content'>
                     
                     <textarea onKeyPress={keyPress} placeholder='type updated post' ></textarea>
 
                 </form>
+                <img src={statePost.image}/>
               
                 
 

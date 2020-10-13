@@ -31,11 +31,12 @@ const Profile = (props) => {
 
             })
     }
+    const profPic = userData.profilePic === '' ? user : userData.profilePic
     return ( 
         <>
             <div className='profile'>
                 <div className='profile_info'>
-                    <Link to='/user'><img src={user}/></Link>
+                    <Link to='/user'><img src={profPic}/></Link>
                     <p>{userData.username}</p>
                 </div>
                 

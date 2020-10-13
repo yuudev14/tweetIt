@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
     tweet : {
         type : String,
-        required : true
     },
     image : {
         type : String,

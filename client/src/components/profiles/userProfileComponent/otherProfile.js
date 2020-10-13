@@ -84,6 +84,8 @@ const OtherProfile = (props) => {
             });
     }
 
+    const profPic = userInfo.profilePic === '' ? user : userInfo.profilePic
+
 
 
     return ( 
@@ -95,7 +97,7 @@ const OtherProfile = (props) => {
                 </div>
                 <div className='profilePicAndBtn'>
                     <div className='prof-pic'>
-                        <img src={user} />
+                        <img src={profPic} />
                         <p>{userInfo.username}</p>
                     </div>
                     {userData.friends !== undefined ? userData.friends.some(friend => friend.username === userInfo.username && friend.accepted === true) ?

@@ -1,10 +1,12 @@
 import React from 'react';
-const Login = ({setLoginForm, login}) => {
+const Login = ({setLoginForm, login, loginErr}) => {
     return ( 
         <>
             <h2>Login-in</h2>
             <p>Welcome back!</p>
+            
             <form onSubmit={login}>
+                <p>{loginErr.msg}</p>
                 <div className='input-container'>
                     <i class="fa fa-user"></i>
                     <input type='text' placeholder='Email'  onChange={(e) => setLoginForm('username', e.target.value)} required/>
@@ -15,6 +17,7 @@ const Login = ({setLoginForm, login}) => {
                 </div>
                 <input type='submit' value='Login'/>
             </form>
+            
         </>
      );
 }

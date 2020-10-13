@@ -31,7 +31,6 @@ const Dashboard = (props) => {
                     });
                 axios.get(`/dashboard/notifications/${auth.code}`)
                     .then(res => {
-                        console.log(res);
                         setNotification(res.data);
                     })
                 
@@ -73,6 +72,10 @@ const Dashboard = (props) => {
         document.querySelector('.search-list').classList.remove('search-list-active')
     }
     const home = () => {
+        axios.get(`/dashboard/user/${auth.code}`)
+            .then(res => {
+                dispatchUser({type : 'USERDATA', data : res.data});
+            });
         axios.get(`/dashboard/news-feed/${auth.code}`)
             .then(res => {
                 dispatch_newsFeed({type : 'NEWSFEED', data : res.data});

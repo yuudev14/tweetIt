@@ -145,6 +145,9 @@
 .Home .authenticate .login-sign-up-authenticate form i {
   color: #1ed2f4;
 }
+.Home .authenticate .login-sign-up-authenticate form p {
+  font-size: 0.8em;
+}
 .Home .authenticate .login-sign-up-authenticate input {
   width: 80%;
   height: 1.4rem;

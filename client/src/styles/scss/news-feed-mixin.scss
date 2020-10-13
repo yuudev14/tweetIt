@@ -31,7 +31,12 @@
             .form{
                 border-bottom: 1px solid rgb(209, 209, 209);
                 margin-bottom: 10px;
+                width: 100%;
+                
 
+            }
+            img{
+                width: 90% !important;
             }
             textarea{
                 width: 100%;
@@ -45,6 +50,15 @@
             
             .formIconsContainer{
                 display: flex;
+                input[type=file]{
+                    display: none;
+                }
+                label{
+                    color : $primary;
+                    margin-top: 10px;
+                    font-size: 1.2em;
+                    cursor: pointer;
+                }
                 input[type=submit]{
                     padding:  10px;
                     background-color: $primary;
@@ -93,6 +107,9 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            img{
+                width: 90%;
+            }
 
             p{
                 width: 100%;
@@ -123,11 +140,20 @@
             justify-content: space-between;
             margin-bottom: 10px;
             position: relative;
+            width: 100%;
+            .date{
+                margin-left: auto;
+                display: flex;
+
+            }
+            
             #Postdate{
-                margin-right: 10%;
+                
                 font-family: $secondaryFont, sans-serif;
+                font-size: 0.7em;
                 
             }
+            
             .dropdownOption{
                 // height: 100px;
                 // width: 100px;

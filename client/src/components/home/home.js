@@ -28,6 +28,12 @@ const Home = (props) => {
         err_retry_password : ''
     });
 
+    const [loginErr, setLoginErr] = useState({
+        msg : ''
+    });
+
+    
+
     useEffect(()=>{
         console.log(registerErr);
         
@@ -89,9 +95,13 @@ const Home = (props) => {
         e.preventDefault();
         axios.post('/authentication/log-in', loginInfo)
             .then(res => {
-                console.log(res.data);
-                dispatch({type : 'LOGIN', code: res.data});
-                props.history.push('/');
+                if(res.data.hasOwnProperty('msg')){
+                    setLoginErr(res.data);
+                }else{
+                    dispatch({type : 'LOGIN', code: res.data});
+                    props.history.push('/');
+                }
+                
             });
 
     };
@@ -103,7 +113,6 @@ const Home = (props) => {
     };
     const setLoginForm = (key, value) => {
         setLoginInfo({
-            
             ...loginInfo,
             [key] : value
         });
@@ -112,12 +121,13 @@ const Home = (props) => {
     const chooseLoginForm = () => {
         document.querySelector('.login').classList.add('btnActive');
         document.querySelector('.sign-up').classList.remove('btnActive');
-        setForm('log-in')
+        setForm('log-in');
     }
     const chooseSignupForm = () => {
         document.querySelector('.login').classList.remove('btnActive');
         document.querySelector('.sign-up').classList.add('btnActive');
-        setForm('sign-up')
+        setLoginErr('');
+        setForm('sign-up');
     }
 
     return ( 
@@ -127,12 +137,6 @@ const Home = (props) => {
                     <div className='logo'>
                         <h1>tweetIt</h1>
                         <i onClick={activateNav} className=' fa fa-angle-down'></i>
-                    </div>
-                    <div className='nav-options'>
-                        <ul>
-                            <Link><li>Home</li></Link>
-                            <Link to='/sign-in'><li>Sign in</li></Link>
-                        </ul>
                     </div>
                 </nav> 
             </header>
@@ -149,7 +153,7 @@ const Home = (props) => {
                                 <button className='sign-up' onClick={chooseSignupForm}>Sign-up</button>
 
                             </div>
-                            {form === 'sign-up' ? <SignUp registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
+                            {form === 'sign-up' ? <SignUp registerErr={registerErr} registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginErr={loginErr} loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
                             
                             
 

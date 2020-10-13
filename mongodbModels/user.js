@@ -25,7 +25,15 @@ const UserSchema = new Schema({
     posts : [postSchema],
     friends : [FriendsSchema],
     friendRequest : [FriendRequestSchema],
-    notifications : [notificationSchema]
+    notifications : [notificationSchema],
+    profilePic : {
+        type : String,
+        default : ''
+    },
+    coverPic : {
+        type : String,
+        default : ''
+    }
 });
 
 const userModel = mongoose.model('user', UserSchema);

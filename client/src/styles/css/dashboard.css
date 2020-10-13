@@ -102,6 +102,8 @@
 }
 .dashboard main .profile_suggestion-section .profile img {
   width: 100px;
+  height: 100px;
+  border-radius: 100px;
 }
 .dashboard main .profile_suggestion-section .profile a {
   color: #0074e1;
@@ -313,6 +315,10 @@
 .dashboard main .new-Tweet .newTweetForm .form {
   border-bottom: 1px solid #d1d1d1;
   margin-bottom: 10px;
+  width: 100%;
+}
+.dashboard main .new-Tweet .newTweetForm img {
+  width: 90% !important;
 }
 .dashboard main .new-Tweet .newTweetForm textarea {
   width: 100%;
@@ -324,6 +330,15 @@
 }
 .dashboard main .new-Tweet .newTweetForm .formIconsContainer {
   display: flex;
+}
+.dashboard main .new-Tweet .newTweetForm .formIconsContainer input[type=file] {
+  display: none;
+}
+.dashboard main .new-Tweet .newTweetForm .formIconsContainer label {
+  color: #1ed2f4;
+  margin-top: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 .dashboard main .new-Tweet .newTweetForm .formIconsContainer input[type=submit] {
   padding: 10px;
@@ -364,6 +379,9 @@
   flex-direction: column;
   overflow: hidden;
 }
+.dashboard main .news-feed-container .feed-content img {
+  width: 90%;
+}
 .dashboard main .news-feed-container .feed-content p {
   width: 100%;
 }
@@ -386,10 +404,15 @@
   justify-content: space-between;
   margin-bottom: 10px;
   position: relative;
+  width: 100%;
+}
+.dashboard main .news-feed-container .feed-user-info .date {
+  margin-left: auto;
+  display: flex;
 }
 .dashboard main .news-feed-container .feed-user-info #Postdate {
-  margin-right: 10%;
   font-family: "Open Sans", sans-serif;
+  font-size: 0.7em;
 }
 .dashboard main .news-feed-container .feed-user-info .dropdownOption {
   height: 0;
@@ -596,6 +619,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 }
 .dashboard .userHomeProfile-section .editUser {
   display: none;
@@ -679,6 +703,27 @@
   width: 95%;
   background-color: #1ed2f4;
   border-radius: 13px;
+  position: relative;
+  overflow: hidden;
+}
+.dashboard .userHomeProfile-section .coverPhoto img {
+  width: 100%;
+  z-index: 5;
+  height: 100%;
+}
+.dashboard .userHomeProfile-section .coverPhoto input {
+  display: none;
+}
+.dashboard .userHomeProfile-section .coverPhoto label {
+  position: absolute;
+  bottom: 10px;
+  z-index: 6;
+  color: #0074e1;
+  right: 10px;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: white;
 }
 .dashboard .userHomeProfile-section .profilePicAndBtn {
   display: flex;
@@ -701,9 +746,21 @@
 .dashboard .userHomeProfile-section .prof-pic {
   margin-top: -50px;
   margin-left: 20px;
+  z-index: 6;
+}
+.dashboard .userHomeProfile-section .prof-pic input {
+  display: none;
+}
+.dashboard .userHomeProfile-section .prof-pic label {
+  color: #0074e1;
+  cursor: pointer;
+  margin-left: -20px;
+  font-size: 1.3em;
 }
 .dashboard .userHomeProfile-section .prof-pic img {
-  width: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
 }
 .dashboard .userHomeProfile-section .prof-pic p {
   text-align: center;
@@ -765,6 +822,10 @@
 .dashboard .userHomeProfile-section .new-Tweet .newTweetForm .form {
   border-bottom: 1px solid #d1d1d1;
   margin-bottom: 10px;
+  width: 100%;
+}
+.dashboard .userHomeProfile-section .new-Tweet .newTweetForm img {
+  width: 90% !important;
 }
 .dashboard .userHomeProfile-section .new-Tweet .newTweetForm textarea {
   width: 100%;
@@ -776,6 +837,15 @@
 }
 .dashboard .userHomeProfile-section .new-Tweet .newTweetForm .formIconsContainer {
   display: flex;
+}
+.dashboard .userHomeProfile-section .new-Tweet .newTweetForm .formIconsContainer input[type=file] {
+  display: none;
+}
+.dashboard .userHomeProfile-section .new-Tweet .newTweetForm .formIconsContainer label {
+  color: #1ed2f4;
+  margin-top: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 .dashboard .userHomeProfile-section .new-Tweet .newTweetForm .formIconsContainer input[type=submit] {
   padding: 10px;
@@ -816,6 +886,9 @@
   flex-direction: column;
   overflow: hidden;
 }
+.dashboard .userHomeProfile-section .news-feed-container .feed-content img {
+  width: 90%;
+}
 .dashboard .userHomeProfile-section .news-feed-container .feed-content p {
   width: 100%;
 }
@@ -838,10 +911,15 @@
   justify-content: space-between;
   margin-bottom: 10px;
   position: relative;
+  width: 100%;
+}
+.dashboard .userHomeProfile-section .news-feed-container .feed-user-info .date {
+  margin-left: auto;
+  display: flex;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info #Postdate {
-  margin-right: 10%;
   font-family: "Open Sans", sans-serif;
+  font-size: 0.7em;
 }
 .dashboard .userHomeProfile-section .news-feed-container .feed-user-info .dropdownOption {
   height: 0;

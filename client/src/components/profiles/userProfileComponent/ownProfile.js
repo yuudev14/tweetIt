@@ -5,9 +5,12 @@ import { USERDATA } from '../../../contexts/userData';
 import axios from 'axios';
 import { IsLogin } from '../../../contexts/isLogin';
 
-const OwnProfile = () => {
+const OwnProfile = (props) => {
+    
     const {userData, dispatchUser} = useContext(USERDATA);
     const {auth} = useContext(IsLogin);
+    const [image, setImage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const [editProfile, setEditProfile] = useState({
         username : '',
@@ -27,6 +30,8 @@ const OwnProfile = () => {
 
         })
     }
+    const url = 'https://api.cloudinary.com/v1_1/yutakaki/image/upload';
+    const preset = 'ml_default';
 
     const saveEditProf = (e) => {
         e.preventDefault();
@@ -42,6 +47,45 @@ const OwnProfile = () => {
                 }
                 
             })
+
+    };
+    
+    const profPic = userData.profilePic === '' ? user : userData.profilePic
+
+    const settingImage = (e) => {
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append('upload_preset', preset);
+        axios.post(url,formData)
+            .then(res => {
+                console.log(res.data);
+                const imageUrl = res.data.secure_url;
+                console.log(imageUrl)
+                axios.post(`/dashboard/change-profile-pic/${auth.code}`, {imageUrl})
+                    .then(res => {
+                        dispatchUser({type : 'USERDATA', data : res.data});
+                        
+                    });
+
+            })
+            .catch(err => console.log(err))
+    }
+    const settingCover = (e) => {
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append('upload_preset', preset);
+        axios.post(url,formData)
+            .then(res => {
+
+                const imageUrl = res.data.secure_url;
+                axios.post(`/dashboard/change-cover-pic/${auth.code}`, {imageUrl})
+                    .then(res => {
+                        dispatchUser({type : 'USERDATA', data : res.data});
+                        
+                    });
+
+            })
+            .catch(err => console.log(err))
 
     }
 
@@ -80,11 +124,20 @@ const OwnProfile = () => {
             </div>
             <div className='Userpicture'>
                 <div className='coverPhoto'>
+                        
+                        <img src={userData.coverPic} />
+                        <input onChange={settingCover} type='file' id='coverPic' accept="image/*" multiple={false} />
+                        <label htmlFor='coverPic' className='fa fa-camera'></label>
 
                 </div>
                 <div className='profilePicAndBtn'>
+                    
                     <div className='prof-pic'>
-                        <img src={user} />
+                    
+                        <input onChange={settingImage} type='file' id='file' accept="image/*" multiple={false} />
+                        
+                        <img src={profPic} />
+                        <label htmlFor='file' className='fa fa-camera'></label>
                         <p>{userData.username}</p>
 
 
