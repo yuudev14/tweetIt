@@ -23,7 +23,7 @@ const FriendSuggestion = ({friend}) => {
                     dispatchUser({type: 'USERDATA', data : res.data});
                     axios.get(`/dashboard/friends-suggestion/${auth.code}`)
                         .then(res =>{
-                            dispatch_suggestion({type :'SUGESSTION', data : res.data});
+                            dispatch_suggestion({type :'SUGGESTION', data : res.data});
                         });  
                 };
                 
