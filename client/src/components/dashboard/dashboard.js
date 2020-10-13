@@ -130,7 +130,7 @@ const Dashboard = (props) => {
                                 <button  onClick={(e) => navView(e.target.className, '.notification-section button', '.notification-section section', 'notif-active','notif-container-active' )}
                                 className='notification-container notif-active'>Notification</button>
                                 <button onClick={(e) => navView(e.target.className, '.notification-section button', '.notification-section section', 'notif-active','notif-container-active' )}
-                                className='friend_request'>Friend Request <span className='friendNum'>{userData.friendRequest.length > 0 ? userData.friendRequest.length : null}</span></button>
+                                className='friend_request'>Friend Request <span className='friendNum'>{userData !== null ? userData.friendRequest.length > 0 ? userData.friendRequest.length : null : null}</span></button>
                             </div>
                             <section className='notification-container notif-container-active'>
                                 {notification.map(notif => <Notification username={userData.username} notification={notif}/> )}
