@@ -2,7 +2,7 @@ import React from 'react';
 const Login = ({setLoginForm, login, loginErr}) => {
     return ( 
         <>
-            <h2>Login-in</h2>
+            <h2>Log-in</h2>
             <p>Welcome back!</p>
             
             <form onSubmit={login}>
