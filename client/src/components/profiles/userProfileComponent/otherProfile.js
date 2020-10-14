@@ -13,11 +13,7 @@ const OtherProfile = (props) => {
     const {auth} = useContext(IsLogin);
     const username = props.match.params.id;
     const [userInfo, setUserInfo] = useState({
-        posts : [{
-            _id : '',
-            Likes : [],
-            comments : [],
-        }]
+        posts : []
     });
     useEffect(()=>{
         axios.get(`/dashboard/other-user/${username}`)
