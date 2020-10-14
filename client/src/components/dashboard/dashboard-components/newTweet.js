@@ -38,6 +38,7 @@ const NewTweet = () => {
     const preset = 'ml_default';
     const addTweet = (e) => {
         e.preventDefault();
+        document.querySelector('.tweetSubmit').disabled = true;
         if(tweet.preview_image){
             const formData = new FormData();
             formData.append('file', tweet.image);
@@ -46,7 +47,9 @@ const NewTweet = () => {
                 .then(res => {
                     axios.post(`/dashboard/addTweet/${auth.code}`, {tweet : tweet.tweet, image: res.data.secure_url})
                         .then(res => {
+                            
                             if(res.data !== false){
+                                document.querySelector('.tweetSubmit').disabled = false;
                                 document.querySelector('.new-Tweet').classList.toggle('active-new-tweet');
                                 setTweet({
                                     image : '',
@@ -59,6 +62,7 @@ const NewTweet = () => {
                                         dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
                                     });
                             }else{
+                                document.querySelector('.tweetSubmit').disabled = false;
                                 setErr('you dont have any tweet yet');
                             }
                         });
@@ -67,6 +71,7 @@ const NewTweet = () => {
             axios.post(`/dashboard/addTweet/${auth.code}`, {tweet : tweet.tweet, image: tweet.image})
                 .then(res => {
                     if(res.data !== false){
+                        document.querySelector('.tweetSubmit').disabled = false;
                         document.querySelector('.new-Tweet').classList.toggle('active-new-tweet');
                         setTweet({
                             image : '',
@@ -79,6 +84,7 @@ const NewTweet = () => {
                                 dispatch_newsFeed({type : 'NEWSFEED', data : res.data});
                             });
                     }else{
+                        document.querySelector('.tweetSubmit').disabled = false;
                         setErr('you dont have any tweet yet');
                     }
                     
@@ -109,7 +115,7 @@ const NewTweet = () => {
                         <input onChange={setImagePreview} type='file' id='postFile' accept="image/*" multiple={false} />
                         <label htmlFor='postFile' className='fa fa-camera'></label>
                     </div>
-                    <input type='submit' value='Tweet' />
+                    <input className='tweetSubmit' type='submit' value='Tweet' />
                 </div>
             </form>
         </>

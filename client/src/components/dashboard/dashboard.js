@@ -70,7 +70,20 @@ const Dashboard = (props) => {
         document.querySelector('#search').value = '';
         document.querySelector('.search-list').classList.remove('search-list-active')
     }
-    const home = () => {
+    const home = (e) => {
+        // navView('newsFeed-section fa fa-home', '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' )
+        const li = document.querySelectorAll('.dashboard footer li');
+        const section = document.querySelectorAll('.dashboard main section');
+        li.forEach(li=> {
+            if('newsFeed-section fa fa-home' === li.className || 'newsFeed-section fa fa-home footer-active' === li.className){
+                li.classList.add('footer-active');
+                section.forEach(section => section.classList[0] === li.classList[0] 
+                    ? section.classList.add('main-active') : section.classList.remove('main-active'))
+            }else{
+                li.classList.remove('footer-active')
+            }
+        });
+        // document.querySelectorAll('.dashboard footer li').forEach(li => li.className[0] !== e.target.className ?)
         axios.get(`/dashboard/user/${auth.code}`)
             .then(res => {
                 dispatchUser({type : 'USERDATA', data : res.data});
@@ -98,22 +111,27 @@ const Dashboard = (props) => {
                     <header>
                         <nav>
                             <div className='logo'>
-                                <Link onClick={home} to='/'><h1>tweetIt</h1></Link>
+                                <Link onClick={home} to='/' className='newsFeed-section'><h1>tweetIt</h1></Link>
                             </div>
-                            <label htmlFor='search' className='search'>
-                                <label className='fa fa-search' htmlFor='search'></label>
-                                <input onChange={search} type='text' id='search' autocomplete="off"/>
-                            </label>
-                            <div className='search-list'>
-                                <ul>
-                                    {searchList.map(search =>{
-                                        let link = search.username === userData.username ? '/user' : `/${search.username}`;
-                                        return (<Link onClick={emptySearch} to={link}><li>{search.username}</li></Link>)
-                                    })}
-                                   
-                                </ul>
+                            <div>
+                                <label htmlFor='search' className='search'>
+                                    <label className='fa fa-search' htmlFor='search'></label>
+                                    <input onChange={search} type='text' id='search' autocomplete="off"/>
+                                </label>
+                                <div className='search-list'>
+                                    <ul>
+                                        {searchList.map(search =>{
+                                            let link = search.username === userData.username ? '/user' : `/${search.username}`;
+                                            return (<Link onClick={emptySearch} to={link}><li>{search.username}</li></Link>)
+                                        })}
+                                    
+                                    </ul>
+
+                                </div>
 
                             </div>
+                            
+                            
 
                             {/* <div className='dashboard-options'>
                                 <ul>
@@ -161,7 +179,7 @@ const Dashboard = (props) => {
                         <nav>
                             <ul>
                                 <li onClick={(e) => navView(e.target.className, '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' )} className='notification-section fa fa-bell'></li>
-                                <li onClick={(e) => navView(e.target.className, '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' )} className='newsFeed-section footer-active fa fa-home'></li>
+                                <li onClick={(e) => navView(e.target.className, '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' )} className='newsFeed-section fa fa-home footer-active'></li>
                                 <li onClick={(e) => navView(e.target.className, '.dashboard footer li', '.dashboard main section', 'footer-active','main-active' )} className='profile_suggestion-section fa fa-user'></li>
                             </ul>
                         </nav>
