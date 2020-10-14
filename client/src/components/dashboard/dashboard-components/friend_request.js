@@ -34,7 +34,7 @@ const FriendRequest = ({friendRequest}) => {
         <div className='friend_request_content' key={friendRequest._id}>
             <div className='user_profile'>
                 <img src={user}/>
-                <Link to={`/${friendRequest.username}`}></Link><p>{friendRequest.username}</p>
+                <Link to={`/${friendRequest.username}`}><p>{friendRequest.username}</p></Link>
             </div>
             <div className='accept_delete'>
                 <button onClick={acceptFriend} className='accept'>Accept</button>

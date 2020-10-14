@@ -61,7 +61,8 @@
         .authenticate-container{
             margin: auto;
             width: 60%;
-            height: 500px;
+            
+            
             display: flex;
         }
         .logo-icon{
@@ -90,8 +91,13 @@
                 
             }
         }
+        .login-sign-up-authenticate{
+            min-height: 450px;
+
+        }
         .login_or_sign-up{
             float: right;
+            
             
             button{
                 background-color: rgba(30,210,244, 0.5);

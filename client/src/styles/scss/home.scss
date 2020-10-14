@@ -3,6 +3,8 @@
 .Home{
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    background-color: $primary;
     header, .authenticate, .about1-container{
         background-color: $primary;
     }

@@ -3,11 +3,7 @@ export const newsFeedReducer = (state, action) => {
         case 'NEWSFEED':
             return action.data;
         case 'RESET':
-            return [{
-                _id : '',
-                comments : [],
-                Likes : []
-            }];
+            return [];
         default:
             return state;
     }

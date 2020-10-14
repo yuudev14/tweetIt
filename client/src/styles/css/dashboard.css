@@ -191,6 +191,10 @@
   border-bottom: 1px solid #0074e1;
   color: #0074e1;
 }
+.dashboard main .notification-section .choose-notification span {
+  color: red;
+  margin-left: 5px;
+}
 .dashboard main .notification-section .notification-container {
   padding-bottom: 70px;
 }

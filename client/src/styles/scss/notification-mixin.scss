@@ -28,6 +28,11 @@
                 border-bottom: 1px solid $secondary;
                 color: $secondary;
             }
+            span{
+                color: red;
+                margin-left: 5px;
+
+            }
         }
         .notification-container{
             padding-bottom: 70px;
