@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import user from '../../../assets/user.png';
 import FriendSuggestion from './friend_suggestion';
 import axios from 'axios';
@@ -36,7 +36,7 @@ const Profile = (props) => {
         <>
             <div className='profile'>
                 <div className='profile_info'>
-                    <Link to='/user'><img src={profPic}/></Link>
+                    <Link to='/user'><img src={profPic} alt='profile'/></Link>
                     <p>{userData.username}</p>
                 </div>
                 

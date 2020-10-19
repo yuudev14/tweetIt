@@ -1,8 +1,5 @@
-import React, {createContext, useReducer, useEffect, useContext} from 'react';
+import React, {createContext, useReducer} from 'react';
 import { userDataReducer } from './reducers/userDataReducer';
-import axios from 'axios';
-import { IsLogin } from './isLogin';
-import { NEWS_FEED } from './news-feed-context';
 
 export const USERDATA = createContext();
 const  UserData= (props) => {

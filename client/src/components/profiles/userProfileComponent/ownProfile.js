@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, { useContext, useState} from 'react';
 import HomeNewsFeed from '../../dashboard/dashboard-components/NewsFeedandNewTweet';
 import user from '../../../assets/user.png';
 import { USERDATA } from '../../../contexts/userData';
@@ -9,8 +9,6 @@ const OwnProfile = (props) => {
     
     const {userData, dispatchUser} = useContext(USERDATA);
     const {auth} = useContext(IsLogin);
-    const [image, setImage] = useState('');
-    const [loading, setLoading] = useState(false);
 
     const [editProfile, setEditProfile] = useState({
         username : '',
@@ -125,7 +123,7 @@ const OwnProfile = (props) => {
             <div className='Userpicture'>
                 <div className='coverPhoto'>
                         
-                        <img src={userData.coverPic} />
+                        <img src={userData.coverPic} alt='cover pic'/>
                         <input onChange={settingCover} type='file' id='coverPic' accept="image/*" multiple={false} />
                         <label htmlFor='coverPic' className='fa fa-camera'></label>
 
@@ -136,7 +134,7 @@ const OwnProfile = (props) => {
                     
                         <input onChange={settingImage} type='file' id='file' accept="image/*" multiple={false} />
                         
-                        <img src={profPic} />
+                        <img src={profPic} alt='profile'/>
                         <label htmlFor='file' className='fa fa-camera'></label>
                         <p>{userData.username}</p>
 

@@ -33,7 +33,7 @@ const FriendRequest = ({friendRequest}) => {
     return ( 
         <div className='friend_request_content' key={friendRequest._id}>
             <div className='user_profile'>
-                <img src={user}/>
+                <img src={user} alt='user'/>
                 <Link to={`/${friendRequest.username}`}><p>{friendRequest.username}</p></Link>
             </div>
             <div className='accept_delete'>

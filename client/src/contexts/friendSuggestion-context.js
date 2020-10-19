@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect} from 'react';
+import React, {createContext, useReducer} from 'react';
 import { suggestionReducer } from './reducers/suggestionReducer';
 
 export const FRIEND_SUGGESTION = createContext()

@@ -1,14 +1,10 @@
-import React, {useEffect, useContext} from 'react';
-import HomeNewsFeed from '../dashboard/dashboard-components/NewsFeedandNewTweet';
+import React, {useEffect} from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import user from '../../assets/user.png';
-import { USERDATA } from '../../contexts/userData';
 import OtherProfile from './userProfileComponent/otherProfile';
 import OwnProfile from './userProfileComponent/ownProfile';
 
 
 const UserProfile = ({navView}) => {
-    const {userData} = useContext(USERDATA);
     useEffect(()=>{
         document.querySelector('.dashboard footer').classList.remove('footer-nav-show');
         document.querySelector('.dashboard footer').classList.add('footer-nav-none');

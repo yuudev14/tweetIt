@@ -1,8 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
 import '../../styles/css/home.css';
-import {isInViewport} from '../methods/method';
-import logo from '../../assets/tweetIt.png';
 import axios from 'axios';
 import SignUp from './login_signup/sign-up';
 import Login from './login_signup/login';
@@ -21,6 +18,7 @@ const Home = (props) => {
         username : '',
         password : '',
     });
+    const [registerSuccess, setRegisterSuccess] = useState('');
     const [registerErr, setRegisterErr] = useState({
         err_username : '',
         err_email : '',
@@ -31,9 +29,17 @@ const Home = (props) => {
     const [loginErr, setLoginErr] = useState({
         msg : ''
     });
+    useEffect(() => {
+        console.log(registerSuccess);
+
+    },[registerSuccess])
 
     
-
+    let isTyping = false;
+    let original = '';
+    let copy = 'Share your thoughts now! Let the world hear what you want to say!';
+    let i = 0;
+    let speed = 50;
     useEffect(()=>{
         if(!isTyping){
             console.log('hi');
@@ -58,11 +64,7 @@ const Home = (props) => {
         document.querySelector('.nav-options').classList.toggle('active-nav');
     }
     // parameters for the typing animation
-    let isTyping = false;
-    let original = '';
-    let copy = 'Share your thoughts now! Let the world hear what you want to say!';
-    let i = 0;
-    let speed = 50;
+    
 
     //an animation event so when the slogan is in window it will animate
     // document.addEventListener('scroll', () => {
@@ -78,16 +80,17 @@ const Home = (props) => {
         axios.post('/authentication/register', registerInfo)
             .then(res => {
                 if(res.data === true){
-                    console.log(true);
+                    setRegisterSuccess('account registered');
+                    setRegisterInfo({
+                        username : '',
+                        email : '',
+                        password : '',
+                        retry_password : '',
+                    });
                 }else{
                     setRegisterErr(res.data);
                 }
-                setRegisterInfo({
-                    username : '',
-                    email : '',
-                    password : '',
-                    retry_password : '',
-                });
+                
             });
 
     };
@@ -122,6 +125,7 @@ const Home = (props) => {
         document.querySelector('.login').classList.add('btnActive');
         document.querySelector('.sign-up').classList.remove('btnActive');
         setForm('log-in');
+        setRegisterSuccess('');
     }
     const chooseSignupForm = () => {
         document.querySelector('.login').classList.remove('btnActive');
@@ -153,7 +157,7 @@ const Home = (props) => {
                                 <button className='sign-up' onClick={chooseSignupForm}>Sign-up</button>
 
                             </div>
-                            {form === 'sign-up' ? <SignUp registerErr={registerErr} registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginErr={loginErr} loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
+                            {form === 'sign-up' ? <SignUp registerSuccess={registerSuccess} registerErr={registerErr} registerInfo={registerInfo} setRegisterForm={setRegisterForm} register={register}/> : <Login loginErr={loginErr} loginInfo={loginInfo} setLoginForm={setLoginForm} login={login}/>}
                         </div>
                        
                        

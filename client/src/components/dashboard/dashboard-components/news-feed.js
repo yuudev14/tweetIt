@@ -6,7 +6,6 @@ import { USERDATA } from '../../../contexts/userData';
 import Comment from './comment';
 import {Link, withRouter} from 'react-router-dom';
 import { NEWS_FEED } from '../../../contexts/news-feed-context';
-import profile from './profile';
 
 const NewsFeeds = (props) => {
     const {post, username,index} = props;
@@ -146,7 +145,7 @@ const NewsFeeds = (props) => {
         <div className='news-feed'>
             <div className='profile_logo'>
                 <div className='logo'>
-                    <img className='weirdPic' src={profilePic === '' || profilePic === undefined ? user : profilePic} />
+                    <img className='weirdPic' src={profilePic === '' || profilePic === undefined ? user : profilePic} alt='weirdpic' />
                 </div>
             </div>
             <div className='feed-content'>

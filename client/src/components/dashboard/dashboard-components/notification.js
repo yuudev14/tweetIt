@@ -6,7 +6,6 @@ import friend from '../../../assets/friend.png';
 import {Link, withRouter} from 'react-router-dom'
 import { NEWS_FEED } from '../../../contexts/news-feed-context';
 import axios from 'axios';
-import profile from './profile';
 
 const Notification = (props) => {
     const {notification, username}=props;
@@ -44,14 +43,14 @@ const Notification = (props) => {
             <div className='notification'>
                 
                 <div className='notification-type'>
-                    <img src={notification.about === 'like your post' ? heart : notification.about === 'commented on your post' ? comment : friend} />
+                    <img src={notification.about === 'like your post' ? heart : notification.about === 'commented on your post' ? comment : friend} alt='about' />
                     
 
                 </div>
                 <div className='notification-content'>
                     
                     <div className='username-pic'>
-                        <img src={profilePic === '' ? user : profilePic} />
+                        <img src={profilePic === '' ? user : profilePic} alt='profpic'/>
 
                     </div>
                     <p className='notif-about'><span className='username'>{notification.username}</span> {notification.about}</p>

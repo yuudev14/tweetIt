@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import user from '../../../assets/user.png';
 import axios from 'axios';
 import {IsLogin} from '../../../contexts/isLogin';
@@ -7,8 +7,8 @@ import { NEWS_FEED } from '../../../contexts/news-feed-context';
 
 const NewTweet = () => {
     const {auth} = useContext(IsLogin);
-    const {newsFeed, dispatch_newsFeed} = useContext(NEWS_FEED);
-    const {userData, dispatchUser} = useContext(USERDATA);
+    const {dispatch_newsFeed} = useContext(NEWS_FEED);
+    const {dispatchUser} = useContext(USERDATA);
     const [tweet, setTweet] = useState({
         image : '',
         tweet : '',
@@ -86,27 +86,21 @@ const NewTweet = () => {
                     }else{
                         document.querySelector('.tweetSubmit').disabled = false;
                         setErr('you dont have any tweet yet');
-                    }
-                    
+                    } 
                 });
-
         }
-        
-        
-
-
     }
     return (
         <>
             <div className='user_pic'>
-                <img src={user} />                 
+                <img src={user} alt='user'/>                 
             </div>
             <form onSubmit={addTweet} className='newTweetForm'>
                 <div className='.form'>
                     <p>{err}</p>
                     <textarea onChange={typeTweet} value={tweet.tweet} placeholder="What's Happening"></textarea>
                     <div className='uploaded-img' >
-                        <img src={tweet.preview_image} />
+                        <img src={tweet.preview_image}/>
                     </div>
                     
                 </div>

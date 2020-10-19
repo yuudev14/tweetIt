@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import user from '../../../assets/user.png';
 import { IsLogin } from '../../../contexts/isLogin';
 import { USERDATA } from '../../../contexts/userData';
@@ -57,7 +57,7 @@ const Comment = ({comment, username, post_id, comment_id, postOwner,setPost}) =>
     return ( 
         <div className='comment-content'>
             <div className='username-profile-comment'>
-                <img src={user} />
+                <img src={user} alt='user' />
             </div>
             <div className='comment'>
                 <div className='username-and-options'>

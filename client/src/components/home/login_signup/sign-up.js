@@ -1,11 +1,13 @@
 import React from 'react';
 
-const SignUp = ({registerErr, register, setRegisterForm, registerInfo}) => {
+const SignUp = ({registerSuccess,registerErr, register, setRegisterForm, registerInfo}) => {
     return ( 
         <>
             <h2>Registration</h2>
             <p>Create your Account</p>
+            
             <form onSubmit={register}>
+                <p>{registerSuccess}</p>
                 <div className='input-container'>
                     <i class="fa fa-user"></i>
                     <input type='text' value={registerInfo.username} placeholder='Username' onChange={(e) => setRegisterForm('username', e.target.value)} required/>
