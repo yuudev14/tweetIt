@@ -18,6 +18,11 @@ const HomeNewsFeed = ({category}) => {
                 {category==='user' ? userData.posts.map((post, i)=> (
                     <NewsFeeds key={i} post={post} index = {i} username={userData.username}/>
                 )) : newsFeed !== 'news-feed'? newsFeed.map((post,i) => <NewsFeeds key={i} index = {i} post={post} username={post.username}/>) : null}
+                {newsFeed.length === 0 && (
+                    <div className='empty'>
+                        <p>Start by posting a tweet or adding a friend to fill up your page</p>
+                    </div>
+                )}
 
                 
             </div>

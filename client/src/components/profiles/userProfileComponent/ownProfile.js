@@ -123,7 +123,7 @@ const OwnProfile = (props) => {
             <div className='Userpicture'>
                 <div className='coverPhoto'>
                         
-                        <img src={userData.coverPic} alt='cover pic'/>
+                        <img src={userData.coverPic}/>
                         <input onChange={settingCover} type='file' id='coverPic' accept="image/*" multiple={false} />
                         <label htmlFor='coverPic' className='fa fa-camera'></label>
 

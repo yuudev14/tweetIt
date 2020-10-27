@@ -360,6 +360,17 @@
 .dashboard main .new-Tweet .newTweetForm .formIconsContainer input[type=submit]:hover {
   transform: scale(1.1);
 }
+.dashboard main .news-feed-container .empty {
+  background-color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 13px;
+}
+.dashboard main .news-feed-container .empty p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  color: #0074e1;
+}
 .dashboard main .news-feed-container .news-feed {
   display: flex;
   padding: 10px 15px;
@@ -875,6 +886,17 @@
 }
 .dashboard .userHomeProfile-section .new-Tweet .newTweetForm .formIconsContainer input[type=submit]:hover {
   transform: scale(1.1);
+}
+.dashboard .userHomeProfile-section .news-feed-container .empty {
+  background-color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 13px;
+}
+.dashboard .userHomeProfile-section .news-feed-container .empty p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  color: #0074e1;
 }
 .dashboard .userHomeProfile-section .news-feed-container .news-feed {
   display: flex;

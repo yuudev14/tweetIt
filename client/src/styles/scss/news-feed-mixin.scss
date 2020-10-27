@@ -78,7 +78,18 @@
             }
         }
     }
-    .news-feed-container{ 
+    .news-feed-container{
+        .empty{
+            background-color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 13px;
+            p{
+                font-family: $secondaryFont, sans-serif;
+                font-size: 1em;
+                color: $secondary;
+            }
+        }
         
         
         .news-feed{
