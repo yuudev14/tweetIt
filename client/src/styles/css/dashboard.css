@@ -793,12 +793,15 @@
   font-family: "Open Sans", sans-serif;
 }
 .dashboard .userHomeProfile-section .friend-total-container {
-  display: flex;
   padding: 10px;
   background-color: white;
   width: 80%;
   margin: 10px;
   border-radius: 13px;
+}
+.dashboard .userHomeProfile-section .friend-total-container .friend-total-container-header {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
 }
 .dashboard .userHomeProfile-section .friend-total-container h3 {
@@ -813,6 +816,28 @@
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
+}
+.dashboard .userHomeProfile-section .friend-total-container .friend {
+  margin-top: 20px;
+  display: none;
+  justify-content: space-between;
+}
+.dashboard .userHomeProfile-section .friend-total-container .friend p {
+  font-family: "Open Sans", sans-serif;
+  color: #0074e1;
+}
+.dashboard .userHomeProfile-section .friend-total-container .friend button {
+  border: none;
+  background-color: #0074e1;
+  color: white;
+  padding: 5px;
+  border-radius: 13px;
+}
+.dashboard .userHomeProfile-section .friend-total-container .friend-active {
+  display: flex;
+}
+.dashboard .userHomeProfile-section .user-posts-none {
+  display: none;
 }
 .dashboard .userHomeProfile-section .active-new-tweet {
   top: 50% !important;

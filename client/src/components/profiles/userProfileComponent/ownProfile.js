@@ -4,6 +4,7 @@ import user from '../../../assets/user.png';
 import { USERDATA } from '../../../contexts/userData';
 import axios from 'axios';
 import { IsLogin } from '../../../contexts/isLogin';
+import {Link} from 'react-router-dom';
 
 const OwnProfile = (props) => {
     
@@ -87,10 +88,11 @@ const OwnProfile = (props) => {
 
     }
 
+    const seeFriends = () => {
+        document.querySelector('.friend').classList.toggle('friend-active');
+        document.querySelector('.user-posts').classList.toggle('user-posts-none');
 
-
-
-    
+    }
     return ( 
         <section className='userHomeProfile-section'>
             <div className='editUser'>
@@ -148,8 +150,20 @@ const OwnProfile = (props) => {
 
             </div>
             <div className='friend-total-container'>
-                <h3>Friends</h3>
-                <button>See All</button>
+                <div className='friend-total-container-header'>
+                    <h3>Friends</h3>
+                    <button onClick={seeFriends}>See All</button>
+                </div>
+                <div className='friendList'>
+                    {userData.friends !== undefined && userData.friends.map((friend, i) => (
+                        <div key={i} className='friend'>
+                            <p>{friend.username}</p>
+                            <Link to={`/${friend.username}`}><button>View Profile</button></Link>
+                        </div>
+                    ))}
+                </div>
+                
+
             </div>
             <div className='user-posts'>
                 <HomeNewsFeed category='user' />

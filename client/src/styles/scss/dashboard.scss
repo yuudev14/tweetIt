@@ -191,13 +191,19 @@
             
         }
         .friend-total-container{
-            display: flex;
+            
             padding: 10px;
             background-color: white;
             width: 80%;
             margin: 10px;
             border-radius: 13px;
-            justify-content: space-between;
+            
+            .friend-total-container-header{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+            }
             h3{
                 font-family: $secondaryFont, sans-serif;
                 color: $primary;
@@ -212,7 +218,29 @@
                 cursor: pointer;
 
             }
+            .friend{
+                margin-top: 20px;
+                display: none;
+                justify-content: space-between;
+                p{
+                    font-family: $secondaryFont, sans-serif;
+                    color: $secondary;
+                }
+                button{
+                    border: none;
+                    background-color: $secondary;
+                    color: white;
+                    padding: 5px;
+                    border-radius: 13px;
+                }
+            }
+            .friend-active{
+                display: flex;
+            }
 
+        }
+        .user-posts-none{
+            display: none;
         }
         
         @include news-feed;

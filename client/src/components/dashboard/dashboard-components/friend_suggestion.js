@@ -10,7 +10,6 @@ const FriendSuggestion = ({friend}) => {
     const {auth} = useContext(IsLogin);
     const {dispatch_suggestion} = useContext(FRIEND_SUGGESTION);
     const {dispatchUser} = useContext(USERDATA);
-    console.log(friend)
 
     const addFriend = () => {
         axios.post('/dashboard/add-friend',{

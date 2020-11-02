@@ -31,12 +31,21 @@ const Profile = (props) => {
 
             })
     }
-    const profPic = userData.profilePic === '' ? user : userData.profilePic
+    const profPic = userData.profilePic === '' ? user : userData.profilePic;
+    const resetUserHome = () => {
+        try{
+            document.querySelector('.friend').classList.remove('friend-active');
+            document.querySelector('.user-posts').classList.remove('user-posts-none');
+        }catch{
+            
+        }
+        
+    }
     return ( 
         <>
             <div className='profile'>
                 <div className='profile_info'>
-                    <Link to='/user'><img src={profPic} alt='profile'/></Link>
+                    <Link onClick={resetUserHome} to='/user'><img src={profPic} alt='profile'/></Link>
                     <p>{userData.username}</p>
                 </div>
                 
