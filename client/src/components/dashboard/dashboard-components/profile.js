@@ -45,7 +45,7 @@ const Profile = (props) => {
         <>
             <div className='profile'>
                 <div className='profile_info'>
-                    <Link onClick={resetUserHome} to='/user'><img src={profPic} alt='profile'/></Link>
+                    <Link to='/user'><img onClick={resetUserHome} src={profPic} alt='profile'/></Link>
                     <p>{userData.username}</p>
                 </div>
                 

@@ -89,8 +89,13 @@ const OwnProfile = (props) => {
     }
 
     const seeFriends = () => {
-        document.querySelector('.friend').classList.toggle('friend-active');
-        document.querySelector('.user-posts').classList.toggle('user-posts-none');
+        try{
+            document.querySelector('.friend').classList.toggle('friend-active');
+            document.querySelector('.user-posts').classList.toggle('user-posts-none');
+        }catch{
+            
+        }
+        
 
     }
     return ( 
