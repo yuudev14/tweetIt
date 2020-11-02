@@ -93,7 +93,7 @@ const OwnProfile = (props) => {
             document.querySelector('.friend').classList.toggle('friend-active');
             document.querySelector('.user-posts').classList.toggle('user-posts-none');
         }catch{
-            
+
         }
         
 
@@ -156,13 +156,14 @@ const OwnProfile = (props) => {
             </div>
             <div className='friend-total-container'>
                 <div className='friend-total-container-header'>
-                    <h3>Friends</h3>
+                    <h3>Friends ({userData.friends !== undefined && userData.friends.filter(friend => friend.accepted === true).length})</h3>
                     <button onClick={seeFriends}>See All</button>
                 </div>
                 <div className='friendList'>
-                    {userData.friends !== undefined && userData.friends.map((friend, i) => (
+                    {userData.friends !== undefined && userData.friends.map((friend, i) => friend.accepted === true &&(
                         <div key={i} className='friend'>
                             <p>{friend.username}</p>
+                            {console.log(friend)}
                             <Link to={`/${friend.username}`}><button>View Profile</button></Link>
                         </div>
                     ))}
